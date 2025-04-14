@@ -78,6 +78,7 @@ function Solicitacao() {
       nPrestacao,
       descricao,
       data,
+      motivo,
       tipoReembolso,
       ordemInterna,
       centroCusto,
