@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import styles from "./Reembolsos.module.scss";
 import Home from "../../assets/Dashboard/home header.png";
 import Seta from "../../assets/Dashboard/Vector.png";
@@ -11,15 +11,14 @@ import Sistema from "../../assets/Dashboard/Sistema-atualizado.png";
 import SolicitarHistorico from "../../assets/Dashboard/Solicitar - Histórico.png";
 import SolicitarReembolso from "../../assets/Dashboard/Solicitar - Reembolso.png";
 //importando a NavBar no Reembolsos
-import NavBar from "../navbar/NavBar.jsx"
+import NavBar from "../navbar/NavBar.jsx";
 
 function Rembolsos() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className={styles.body}>
-
-<NavBar />
+      <NavBar />
 
       <header>
         <img src={Home} alt="Casinha da header" />
@@ -35,8 +34,12 @@ function Rembolsos() {
         </p>
 
         <section className={styles.containerCards}>
-          <article className={styles.card}  onClick={()=>{navigate("/solicitacao")}} > 
-
+          <article
+            className={styles.card}
+            onClick={() => {
+              navigate("/solicitacao");
+            }}
+          >
             <img src={SolicitarReembolso} alt="" />
             <p>Solicitar Reembolso</p>
           </article>
