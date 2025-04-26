@@ -1,0 +1,239 @@
+.layoutSolicitacao {
+  display: flex;
+}
+
+.containerPrincipalSolicitacao {
+  width: 95vw;
+}
+
+.headerSolicitacao {
+  //border: solid red;
+  width: 30vw;
+  display: flex;
+}
+
+.mainSolicitacao {
+  width: 100%;
+}
+
+.formMain {
+  display: flex;
+  justify-content: space-between;
+}
+
+//Estilizzação padrão para os inputs, select , label e textarea
+
+label {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #23282f;
+}
+
+input,
+select,
+textarea {
+  border-radius: 6px;
+  border: solid #cbd4e1 0.8px;
+  height: 4vh;
+  width: 100%;
+}
+
+//Estilizção do grupo1
+.formGrupo1 {
+  width: 35%;
+  height: 25vh;
+  // border: solid green;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.inputNome {
+  // border: solid red;
+  width: 45%;
+}
+
+.inputEmpresa {
+  //border: solid blue;
+  width: 25%;
+}
+
+.inputPrestacao {
+  //  border: solid green;
+  width: 25%;
+}
+
+.inputMotivo {
+  // border: solid orange;
+  width: 100%;
+
+  textarea {
+    height: 10vh;
+  }
+}
+
+//Estilização da barra vertical
+
+.barraVertical {
+  background-color: #cbd4e1;
+  height: 25vh;
+  width: 0.1vw;
+}
+
+//Estilizção do grupo2
+
+.formGrupo2 {
+  //border: solid green;
+  width: 60%;
+  height: 25vh;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.inputData {
+  //border: solid green;
+  width: 20%;
+}
+
+.tipoDeDespesas {
+  // border: solid blue;
+  width: 30%;
+}
+
+.centroDeCusto {
+  //border: solid purple;
+  width: 45%;
+}
+
+.ordem,
+.divisoes,
+.pep,
+.distancia {
+  // border: solid red;
+  width: 8%;
+}
+
+.moeda,
+.valorKm,
+.valorFaturado,
+.despesa {
+  // border: solid pink;
+  width: 11%;
+}
+
+.botoes {
+  //border: solid red;
+  width: 15%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 0.5rem;
+  height: 6vh;
+
+  .salvar {
+    background-color: #001a3d;
+    color: #ffffff;
+    width: 60%;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .deletar {
+    width: 30%;
+    background-color: #00bedd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+//Estilização da tabela
+table {
+  width: 100%;
+  border: solid;
+  border-collapse: collapse;
+}
+
+//Cabeçalho
+th {
+  background-color: #CBD4E1;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #23282f;
+  font-size: 1rem;
+}
+
+th,
+td {
+  border: solid;
+  text-align: center;
+}
+
+.btnLixeira {
+  border: none;
+  :hover {
+    background-color: #a60b2f;
+    border-radius: 6px;
+  }
+}
+
+
+//Footer
+
+.footerSolicitacao {
+  // background-color: pink;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  height: 15vh;
+
+  section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    height: 15vh;
+  }
+
+  div {
+    // border: solid;
+    width: 20%;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .boxButtonFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+
+    .buttonAnalise {
+      background-color: #001a3d;
+      width: 40%;
+      height: 6vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      color: white;
+    }
+
+    .buttonCancelar {
+      background-color: #a60b2f;
+      width: 40%;
+      height: 6vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      color: white;
+    }
+  }
+}
+
