@@ -1,15 +1,13 @@
-import {useNavigate} from "react-router-dom"
-//import Capa from "../../assets/Tela Login/imagem tela de login.png";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/Tela_Login/logo_ws.png";
-import styles from "./Login.module.scss"
+import styles from "./Login.module.scss";
 
 function Login() {
+  const navigate = useNavigate(); //Iniciando o hook useNavigate
 
-const navigate = useNavigate() //Iniciando o hook useNavigate
-
-const irParaReembolsos = () => {
-  navigate("/reembolsos")  //Redirecionando para a página de reembolsos
-}
+  const irParaReembolsos = () => {
+    navigate("/reembolsos"); //Redirecionando para a página de reembolsos
+  };
 
   return (
     <main className={styles.mainLogin}>
@@ -40,7 +38,6 @@ const irParaReembolsos = () => {
             <button onClick={irParaReembolsos}>Entrar</button>
             <button>Criar conta</button>
           </div>
-
         </form>
       </section>
     </main>
