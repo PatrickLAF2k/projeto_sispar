@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Logo from "../../assets/Tela_Login/logo_ws.png";
+import Logo from "../../assets/Tela_Login/logo_ws_sem_txt.png";
 import styles from "./Login.module.scss";
 
 function Login() {
@@ -31,8 +31,9 @@ function Login() {
             id="password"
             placeholder="Senha"
           />
+          
 
-          <p>Esqueci minha senha</p>
+          <a href="#">Esqueci minha senha</a>
 
           <div className={styles.boxButton}>
             <button onClick={irParaReembolsos}>Entrar</button>
