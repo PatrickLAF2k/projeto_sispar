@@ -1,6 +1,6 @@
 import {useNavigate} from "react-router-dom"
 //import Capa from "../../assets/Tela Login/imagem tela de login.png";
-import Logo from "../../assets/Tela_Login/logo-ws.png";
+import Logo from "../../assets/Tela_Login/logo_ws.png";
 import styles from "./Login.module.scss"
 
 function Login() {
