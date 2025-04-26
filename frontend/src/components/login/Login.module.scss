@@ -5,17 +5,15 @@
 .containerFoto {
   width: 65%;
   height: 100vh;
-  //background-color: green;
   background-image: url("../../assets/Tela_Login/navio_cargueiro_com_containers.jpg");
   background-repeat: no-repeat;
-  //background-size: contain;
+  border: #ff0000 dotted 1px;
   background-size: cover;
-  background-size: 100%;
   background-position: center;
 }
 
 .formWapper {
-  //border: solid red;
+  // border: solid red;
   width: 35%;
   height: 100vh;
   display: flex;
@@ -24,12 +22,12 @@
   align-items: center;
 
   .boxLogo {
-    height: 20vh;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    //border: solid blue;
+    // border: solid blue;
     h1 {
       width: 60%;
       font-size: 2rem;
@@ -38,6 +36,10 @@
     p {
       color: blue;
       font-size: 1rem;
+    }
+
+    img{
+      width: 30%;
     }
   }
 
