@@ -19,8 +19,8 @@
     .divFotoPerfil p,
     .divButton p {
       visibility: visible;
-      opacity: 1; /* Transição de visibilidade usando opacity */
-      transition: opacity 0.3s ease-in-out; /* Transição suave de opacidade */
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
     }
   }
 
@@ -55,8 +55,8 @@
       visibility: hidden;
       white-space: nowrap;
       overflow: hidden;
-      opacity: 0; /* Inicialmente escondido com opacidade */
-      transition: opacity 0.3s ease-in-out; /* Transição suave de opacidade */
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
     }
   }
 
@@ -95,8 +95,8 @@
           overflow: hidden;
           position: relative;
           left: 3vw;
-          opacity: 0; /* Inicialmente escondido com opacidade */
-          transition: opacity 0.3s ease-in-out; /* Transição suave de opacidade */
+          opacity: 0;
+          transition: opacity 0.3s ease-in-out;
         }
       }
     }
