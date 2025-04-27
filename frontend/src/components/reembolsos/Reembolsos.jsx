@@ -20,38 +20,39 @@ function Rembolsos() {
     <div className={styles.body}>
       <NavBar />
 
-      <header>
+      <header className={styles.headerRembolsos}>
         <img src={Home} alt="Casinha da header" />
         <img src={Seta} alt="Setinha da header" />
         <p>Reembolsos</p>
       </header>
 
       <main className={styles.mainReembolsos}>
-        <h1>Sistema de Reembolsos</h1>
-        <p>
-          Solicite novos pedidos de reembolso, visualize solicitações em análise
-          e todo o histórico.
-        </p>
+        <div className={styles.containerTxtRembolsos}>
+          <h1>Sistema de Reembolsos</h1>
+          <h>
+            Solicite novos pedidos de reembolso, visualize solicitações em
+            análise e todo o histórico.
+          </h>
+        </div>
 
         <section className={styles.containerCards}>
           <article
-            className={styles.card}
             onClick={() => {
               navigate("/solicitacao");
             }}
           >
             <img src={SolicitarReembolso} alt="" />
-            <p>Solicitar Reembolso</p>
+            <h1>Solicitar Reembolso</h1>
           </article>
 
-          <article className={styles.card}>
+          <article>
             <img src={Analises} alt="" />
-            <p>Verificar análises</p>
+            <h1>Verificar análises</h1>
           </article>
 
-          <article className={styles.card}>
+          <article>
             <img src={SolicitarHistorico} alt="" />
-            <p>Histórico</p>
+            <h1>Histórico</h1>
           </article>
         </section>
 
@@ -91,7 +92,7 @@ function Rembolsos() {
 
         <section className={styles.containerSistema}>
           <img src={Sistema} alt="" />
-          <a href="">Sistema atualizado.</a>
+          <a href="#">Sistema atualizado.</a>
         </section>
       </main>
     </div>
