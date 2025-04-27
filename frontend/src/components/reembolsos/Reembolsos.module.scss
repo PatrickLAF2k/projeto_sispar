@@ -1,14 +1,19 @@
 .body {
   display: flex;
+  width: 100vw;
+  height: 100vh;
+  border: #ff0000 dotted 1px;
+  // margin-left: 5vw;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  //border: solid red;
-  height: 5vh;
-  width: 15vw;
+  // border: #ff0000 dotted 1px;
+  height: 5%;
+  width: 8%;
+  margin-left: 6vw;
 
   p {
     font-size: 1rem;
