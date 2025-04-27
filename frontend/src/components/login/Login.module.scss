@@ -2,12 +2,12 @@
   transition: 0.3s;
 
   &:hover {
-    border: #001c43 solid 1px;
+    border: #001a3d solid 1px;
   }
 
   &:focus {
-    box-shadow: 0 0 5px #001c43;
-    border: #001c43 solid 1px;
+    box-shadow: 0 0 5px #001a3d;
+    border: #001a3d solid 1px;
     outline: none;
   }
 }
@@ -25,7 +25,7 @@
   background-position: center;
 }
 
-.formWapper {
+.containerDados {
   width: 35%;
   height: 100vh;
   display: flex;
@@ -33,7 +33,7 @@
   justify-content: center;
   align-items: center;
 
-  .boxLogo {
+  .divLogo {
     height: 30vh;
     display: flex;
     flex-direction: column;
@@ -41,6 +41,10 @@
     justify-content: space-evenly;
     user-select: none;
     margin-bottom: 1rem;
+
+    img {
+      width: 30%;
+    }
 
     h1 {
       width: 45%;
@@ -51,10 +55,6 @@
       color: blue;
       font-size: 1rem;
       font-weight: 600;
-    }
-
-    img {
-      width: 30%;
     }
   }
 
@@ -73,8 +73,8 @@
       @include input_styles;
     }
 
-    a{
-      all : unset;
+    a {
+      all: unset;
       cursor: pointer;
       transition: 0.3s;
 
@@ -84,26 +84,23 @@
     }
   }
 
-  .boxButton {
+  .divButtons {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-
-    
 
     button {
       width: 5vw;
       height: 4vh;
       border-radius: 6px;
       font-size: 1rem;
-      
-      background-color: #00BEDD;
+
+      background-color: #00bedd;
       cursor: pointer;
       transition: 0.3s;
-      
 
       &:hover {
-        background-color: #001c43;
+        background-color: #001a3d;
         color: white;
       }
     }

@@ -15,8 +15,8 @@ function Login() {
         {/* <img src={Capa} alt="Foto de um navio cargueiro" /> */}
       </section>
 
-      <section className={styles.formWapper}>
-        <div className={styles.boxLogo}>
+      <section className={styles.containerDados}>
+        <div className={styles.divLogo}>
           <img src={Logo} alt="Logo da wilson sons" />
           <h1>Boas vindas ao Novo Portal SISPAR </h1>
           <p>Sistema de Emissão de Boletos e Parcelamento</p>
@@ -31,11 +31,10 @@ function Login() {
             id="password"
             placeholder="Senha"
           />
-          
 
           <a href="#">Esqueci minha senha</a>
 
-          <div className={styles.boxButton}>
+          <div className={styles.divButtons}>
             <button onClick={irParaReembolsos}>Entrar</button>
             <button>Criar conta</button>
           </div>
