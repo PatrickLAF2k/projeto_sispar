@@ -114,7 +114,7 @@ function Solicitacao() {
           "Content-Type": "application/json",
         },
       });
-  
+
       setEnviado(true); // Aciona o useEffect
     } catch (error) {
       console.error("Erro ao enviar:", error);
@@ -169,13 +169,14 @@ function Solicitacao() {
     limparCampos(); // limpa os inputs também (se quiser)
   };
 
-  //-------------------
+  //---------------------------------------------RETORNO--------------------------------
 
   return (
-    <div className={styles.layoutSolicitacao}>
+    <div className={styles.layoutBody}>
       <NavBar />
 
       <div className={styles.containerPrincipalSolicitacao}>
+
         <header className={styles.headerSolicitacao}>
           <img src={Home} alt="Vetor da casinha" />
           <img src={Seta} alt="Vetor da setinha" />
@@ -183,26 +184,16 @@ function Solicitacao() {
           <img src={Seta} alt="Vetor da setinha" />
           <p>Solicitação de Reembolsos</p>
         </header>
-
-        <main className={styles.mainSolicitacao}>
-          {/* onSubmit:  É um evento que dispara quando você clica no botão de “Enviar” 
-       (e) => e.preventDefault():Essa é uma função que bloqueia o comportamento padrão do formulário. */}
-
-          {/* OBS: Em HTML puro, quando você envia um <form>, ele recarrega a página automaticamente.
-Só que no React a gente não quer que isso aconteça, porque a gente controla tudo com JavaScript e hooks (useState, useEffect, etc).
-Por isso, usamos e.preventDefault() pra impedir o recarregamento da página. */}
-
+        
+        {/* Aqui começa a seção de solicitação */}
+        <section className={styles.sectionSolicitacao}> 
+                  
           <form
             onSubmit={(e) => e.preventDefault()}
-            className={styles.formMain}
           >
             <div className={styles.formGrupo1}>
-              <div className={styles.inputNome}>
-                {/* onChange:  é um evento no React (e também no HTML puro) que dispara quando o valor de um campo muda.
-Diz ao React: “toda vez que o usuário digitar algo nesse campo, atualize a variável colaborador com o novo valor”. 
-e.target.value é o que foi digitado pelo usuário.
-*/}
 
+              <div className={styles.inputNome}>
                 <label htmlFor="nome"> Nome Completo</label>
                 <input
                   value={colaborador}
@@ -245,9 +236,9 @@ e.target.value é o que foi digitado pelo usuário.
               </div>
             </div>
 
-            <div className={styles.barraVertical}></div>
 
             <div className={styles.formGrupo2}>
+
               <div className={styles.inputData}>
                 <label htmlFor="date"> Data</label>
                 <input
@@ -258,7 +249,7 @@ e.target.value é o que foi digitado pelo usuário.
                 />
               </div>
 
-              <div className={styles.selectDespesas}>
+              <div className={styles.inputDespesas}>
                 <label htmlFor="tipoReembolso"> Tipo de Despesa </label>
 
                 <select
@@ -412,13 +403,12 @@ e.target.value é o que foi digitado pelo usuário.
             </div>
           </form>
 
-          {/* table é a tag principal que vai definir a tabela */}
-          {/* thead é a tag que agrupa o cabeçalho */}
-          {/* tr é a linha da tabela */}
-          {/* th título da tabela, um para cada título, ex: nome - idade - estado */}
-          {/* tbody agrupa o corpo da tabela (os dados que será recebido) */}
+          
+        </section>
 
-          <table>
+        {/* Aqui começa a tabela */}
+        <section className={styles.sectionTable}>
+        <table>
             <thead>
               <tr>
                 <th></th>
@@ -481,7 +471,7 @@ e.target.value é o que foi digitado pelo usuário.
               ))}
             </tbody>
           </table>
-        </main>
+        </section>
 
         <footer className={styles.footerSolicitacao}>
           <section>
