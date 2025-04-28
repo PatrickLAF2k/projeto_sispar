@@ -1,5 +1,6 @@
 # Importa a classe Flask para criar a aplicação
 from flask import Flask
+from flask_cors import CORS
 
 # Importa o blueprint do colaborador, onde ficam as rotas relacionadas
 from src.controller.colaborador_controller import bp_colaborador
@@ -14,6 +15,7 @@ from config import Config
 def create_app():
     # Cria uma instância da aplicação Flask
     app = Flask(__name__)
+    CORS(app, origins="*")
 
     # Registra o blueprint do colaborador, conectando as rotas com a aplicação principal
     app.register_blueprint(bp_colaborador)
