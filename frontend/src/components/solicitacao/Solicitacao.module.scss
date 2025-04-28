@@ -1,239 +1,319 @@
-.layoutSolicitacao {
+.layoutBody {
   display: flex;
-}
+  width: 100vw;
+  height: 100vh;
+  padding-right: 1%;
+  // background-color: #cae0ff;
 
-.containerPrincipalSolicitacao {
-  width: 95vw;
-}
-
-.headerSolicitacao {
-  //border: solid red;
-  width: 30vw;
-  display: flex;
-}
-
-.mainSolicitacao {
-  width: 100%;
-}
-
-.formMain {
-  display: flex;
-  justify-content: space-between;
-}
-
-//Estilizzação padrão para os inputs, select , label e textarea
-
-label {
-  font-weight: 700;
-  font-size: 1rem;
-  color: #23282f;
-}
-
-input,
-select,
-textarea {
-  border-radius: 6px;
-  border: solid #cbd4e1 0.8px;
-  height: 4vh;
-  width: 100%;
-}
-
-//Estilizção do grupo1
-.formGrupo1 {
-  width: 35%;
-  height: 25vh;
-  // border: solid green;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.inputNome {
-  // border: solid red;
-  width: 45%;
-}
-
-.inputEmpresa {
-  //border: solid blue;
-  width: 25%;
-}
-
-.inputPrestacao {
-  //  border: solid green;
-  width: 25%;
-}
-
-.inputMotivo {
-  // border: solid orange;
-  width: 100%;
-
-  textarea {
-    height: 10vh;
-  }
-}
-
-//Estilização da barra vertical
-
-.barraVertical {
-  background-color: #cbd4e1;
-  height: 25vh;
-  width: 0.1vw;
-}
-
-//Estilizção do grupo2
-
-.formGrupo2 {
-  //border: solid green;
-  width: 60%;
-  height: 25vh;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.inputData {
-  //border: solid green;
-  width: 20%;
-}
-
-.tipoDeDespesas {
-  // border: solid blue;
-  width: 30%;
-}
-
-.centroDeCusto {
-  //border: solid purple;
-  width: 45%;
-}
-
-.ordem,
-.divisoes,
-.pep,
-.distancia {
-  // border: solid red;
-  width: 8%;
-}
-
-.moeda,
-.valorKm,
-.valorFaturado,
-.despesa {
-  // border: solid pink;
-  width: 11%;
-}
-
-.botoes {
-  //border: solid red;
-  width: 15%;
-  display: flex;
-  justify-content: space-around;
-  padding-top: 0.5rem;
-  height: 6vh;
-
-  .salvar {
-    background-color: #001a3d;
-    color: #ffffff;
-    width: 60%;
-    font-size: 1rem;
+  .headerSolicitacao {
     display: flex;
+    gap: 16px;
     align-items: center;
-    justify-content: space-evenly;
-  }
-  .deletar {
-    width: 30%;
+    height: 5%;
+    width: 95%;
+    margin-left: auto;
     background-color: #00bedd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-//Estilização da tabela
-table {
-  width: 100%;
-  border: solid;
-  border-collapse: collapse;
-}
-
-//Cabeçalho
-th {
-  background-color: #CBD4E1;
-  font-size: 1rem;
-  font-weight: 400;
-  color: #23282f;
-  font-size: 1rem;
-}
-
-th,
-td {
-  border: solid;
-  text-align: center;
-}
-
-.btnLixeira {
-  border: none;
-  :hover {
-    background-color: #a60b2f;
-    border-radius: 6px;
-  }
-}
-
-
-//Footer
-
-.footerSolicitacao {
-  // background-color: pink;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  width: 100%;
-  height: 15vh;
-
-  section {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 50%;
-    height: 15vh;
   }
 
-  div {
-    // border: solid;
-    width: 20%;
-    height: 10vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
+  .sectionSolicitacao {
+    width: 95%;
+    height: 25vh;
+    margin-left: auto;
+    // background-color: #d3788d;
 
-  .boxButtonFooter {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 50%;
-
-    .buttonAnalise {
-      background-color: #001a3d;
-      width: 40%;
-      height: 6vh;
+    form {
       display: flex;
-      align-items: center;
-      justify-content: space-evenly;
-      color: white;
-    }
+      height: 100%;
 
-    .buttonCancelar {
+      .formGrupo1 {
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-right: 8px;
+        
+
+        .inputNome {
+          // border: solid red;
+          width: 45%;
+        }
+
+        .inputEmpresa {
+          //border: solid blue;
+          width: 25%;
+        }
+
+        .inputPrestacao {
+          //  border: solid green;
+          width: 25%;
+        }
+
+        .inputMotivo {
+          // border: solid orange;
+          width: 100%;
+
+          textarea {
+            height: 10vh;
+          }
+        }
+      }
+
+      .formGrupo2 {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+
+        padding-left: 8px;
+        
+
+        .inputData {
+          
+
+          input[type="date"] {
+            text-align: center;
+            font-size: 1rem;
+            padding-right: 8px;
+          }
+
+          [type="date"]::-webkit-calendar-picker-indicator{
+            background-color: #a60b2f;
+            padding: 8px;
+            cursor: pointer;
+            opacity: 0;
+          }
+          
+          input {
+            background-image: url("../../assets/Solicitacao/calender.png");
+            background-repeat: no-repeat;
+            background-position: right;
+            
+            
+          }
+        }
+
+        .inputDespesas {
+          
+          width: 30%;
+
+          select {
+            //seletor todo
+            background-image: url("../../assets/Solicitacao/seta.png");
+            background-repeat: no-repeat;
+            background-position: right;
+            text-align: center;
+            cursor: pointer;
+            appearance: none; /* Remove a aparência do seletor */
+          }
+
+          // option {
+          //   //dentro do seletor
+          //   // background-color: #bee433;
+          // }
+
+          ::-ms-expand {
+            background-color: #00bedd;
+          }
+        }
+
+        .moeda{
+          select {
+            //seletor todo
+            background-image: url("../../assets/Solicitacao/seta.png");
+            background-repeat: no-repeat;
+            background-position: right;
+            // background-size: 50%;
+            text-align: center;
+            cursor: pointer;
+            appearance: none; /* Remove a aparência do seletor */
+          }
+        }
+
+        .centroDeCusto {
+          //border: solid purple;
+          width: 45%;
+
+          select {
+            //seletor todo
+            background-image: url("../../assets/Solicitacao/seta.png");
+            background-repeat: no-repeat;
+            background-position: right;
+            text-align: center;
+            cursor: pointer;
+            appearance: none; /* Remove a aparência do seletor */
+          }
+        }
+
+        
+
+        .ordem,
+        .divisoes,
+        .pep,
+        .distancia {
+          // border: solid red;
+          width: 8%;
+        }
+
+        .valorKm,
+        .valorFaturado,
+        .despesa {
+          // border: solid pink;
+          width: 11%;
+        }
+
+        .botoes {
+          //border: solid red;
+          width: 15%;
+          display: flex;
+          justify-content: space-around;
+          padding-top: 0.5rem;
+          height: 6vh;
+
+          .salvar {
+            background-color: #001a3d;
+            color: #ffffff;
+            width: 60%;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+          }
+          .deletar {
+            width: 30%;
+            background-color: #00bedd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+
+      label {
+        font-weight: 700;
+        color: #23282f;
+      }
+
+      input,
+      select,
+      textarea {
+        border-radius: 6px;
+        border: solid #cbd4e1 0.8px;
+        height: 4vh;
+        width: 100%;
+      }
+    }
+  }
+
+  .sectionTable {
+    table {
+      width: 95%;
+      height: 60vh;
+      margin-left: auto;
+      border-collapse: collapse;
+      border-radius: 6px;
+      // border: solid #cbd4e1 0.8px;
+      background-color: #e7ff7a;
+
+      thead {
+        tr {
+          border: solid;
+          text-align: center;
+          th {
+            background-color: #cbd4e1;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #23282f;
+            font-size: 1rem;
+            border: solid;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  //Estilizzação padrão para os inputs, select , label e textarea
+
+  //Estilizção do grupo1
+
+  //Estilização da barra vertical
+
+  //Estilizção do grupo2
+
+  //Estilização da tabela
+
+  //Cabeçalho
+
+  // th,
+  // td {
+  //   border: solid;
+  //   text-align: center;
+  // }
+
+  .btnLixeira {
+    border: none;
+    :hover {
       background-color: #a60b2f;
-      width: 40%;
-      height: 6vh;
+      border-radius: 6px;
+    }
+  }
+
+  //Footer
+
+  .footerSolicitacao {
+    // background-color: pink;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    height: 10vh;
+    background-color: #b82c4f;
+
+    section {
       display: flex;
-      align-items: center;
       justify-content: space-evenly;
-      color: white;
+      align-items: center;
+      width: 50%;
+      height: 15vh;
+    }
+
+    div {
+      // border: solid;
+      width: 20%;
+      height: 10vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    .boxButtonFooter {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 50%;
+
+      .buttonAnalise {
+        background-color: #001a3d;
+        width: 40%;
+        height: 6vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        color: white;
+      }
+
+      .buttonCancelar {
+        background-color: #a60b2f;
+        width: 40%;
+        height: 6vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        color: white;
+      }
     }
   }
 }
-
