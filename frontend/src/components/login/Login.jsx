@@ -1,12 +1,31 @@
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/Tela_Login/logo_ws_sem_txt.png";
 import styles from "./Login.module.scss";
+import api from "../../Services/Api";
 
 function Login() {
   const navigate = useNavigate(); //Iniciando o hook useNavigate
 
   const irParaReembolsos = () => {
     navigate("/reembolsos"); //Redirecionando para a página de reembolsos
+  };
+
+  // inicializando os estados
+
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
+  const fazerLogin = async (e) => {
+    e.preventDefault(); // Previne o comportamento padrão do formulário
+    try {
+      const resposta = await api.post("/colaboradores/login", {
+        "email": email,
+        "senha": senha,
+      });
+    } catch (error) {
+      console.log("Erro ao fazer login: ", error);
+      alert('Deu um erro de login aqui')
+    }
   };
 
   return (
