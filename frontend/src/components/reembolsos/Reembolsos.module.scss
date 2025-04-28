@@ -8,13 +8,10 @@
     display: flex;
     gap: 16px;
     align-items: center;
-    height: 6%;
+    height: 5%;
     width: 95%;
     margin-left: auto;
-    // background-color: #00bedd;
-    p {
-      font-size: 1rem;
-    }
+    background-color: #00bedd;
   }
 
   .mainReembolsos {
@@ -22,7 +19,7 @@
     height: 100%;
     margin-left: auto;
     display: flex;
-    // background-color: #007a6a;
+    background-color: #007a6a;
     flex-direction: column;
     align-items: center;
     justify-content: center;
