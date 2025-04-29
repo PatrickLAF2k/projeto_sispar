@@ -1,65 +1,94 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Logo from "../../assets/Tela_Login/logo_ws_sem_txt.png";
 import styles from "./Login.module.scss";
 import api from "../../Services/Api";
+import CadastroModal from "../../modals/cadastro/CadastroModal"; 
 
 function Login() {
   const navigate = useNavigate(); //Iniciando o hook useNavigate
 
-  const irParaReembolsos = () => {
-    navigate("/reembolsos"); //Redirecionando para a página de reembolsos
-  };
-
-  // inicializando os estados
-
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [mensagemErro, setMensagemErro] = useState("");
+  const [mostrarCadastro, setMostrarCadastro] = useState(false);
+
+  const abrirCadastro = () => {
+    setMostrarCadastro(true); // Exibe o modal de cadastro
+  };
+
+  const fecharCadastro = () => {
+    setMostrarCadastro(false); // Fecha o modal de cadastro
+  };
 
   const fazerLogin = async (e) => {
     e.preventDefault(); // Previne o comportamento padrão do formulário
+
     try {
-      const resposta = await api.post("/colaboradores/login", {
-        "email": email,
-        "senha": senha,
+      const resposta = await api.post("/colaborador/login", {
+        email: email,
+        senha: senha,
       });
+
+      if (resposta.status === 200) {
+        alert("Login realizado com sucesso!");
+        navigate("/reembolsos"); // Redireciona para a página de reembolsos
+      }
     } catch (error) {
-      console.log("Erro ao fazer login: ", error);
-      alert('Deu um erro de login aqui')
+      if (error.response) {
+        setMensagemErro(error.response.data.mensagem);
+      }
     }
   };
 
   return (
     <main className={styles.mainLogin}>
-      <section className={styles.containerFoto}>
-        {/* <img src={Capa} alt="Foto de um navio cargueiro" /> */}
-      </section>
+      <section className={styles.containerFoto}></section>
 
       <section className={styles.containerDados}>
         <div className={styles.divLogo}>
           <img src={Logo} alt="Logo da wilson sons" />
-          <h1>Boas vindas ao Novo Portal SISPAR </h1>
+          <h1>Boas vindas ao Novo Portal SISPAR</h1>
           <p>Sistema de Emissão de Boletos e Parcelamento</p>
         </div>
 
-        <form action="">
-          <input type="email" name="email" id="email" placeholder="Email" />
+        <form className={styles.formLogin}>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
           <input
             type="password"
             name="password"
             id="password"
             placeholder="Senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
           />
+
+          <p className={styles.mensagemError}>{mensagemErro}</p>
 
           <a href="#">Esqueci minha senha</a>
 
           <div className={styles.divButtons}>
-            <button onClick={irParaReembolsos}>Entrar</button>
-            <button>Criar conta</button>
+            <button onClick={fazerLogin}>Entrar</button>
+            <button type="button" onClick={abrirCadastro}> Criar conta
+            </button>
           </div>
         </form>
       </section>
+
+      {/* Modal de Cadastro */}
+      {mostrarCadastro && <CadastroModal fecharModal={fecharCadastro} />}
     </main>
   );
 }
+
 export default Login;
