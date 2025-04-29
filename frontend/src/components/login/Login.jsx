@@ -20,14 +20,14 @@ function Login() {
     setMostrarCadastro(false); // Fecha o modal de cadastro
   };
 
-  if (email == "dev@gmail.com" && senha == "dev") {
-    navigate("/reembolsos"); // Redireciona para a página de reembolsos DESENVOLVIMENTO
-  }
-
   const fazerLogin = async (e) => {
     e.preventDefault(); // Previne o comportamento padrão do formulário
 
     try {
+      if (email == "dev@gmail.com" && senha == "dev") {
+        navigate("/reembolsos"); // Redireciona para a página de reembolsos DESENVOLVIMENTO
+      }
+
       const resposta = await api.post("/colaborador/login", {
         email: email,
         senha: senha,
@@ -51,7 +51,9 @@ function Login() {
       <section className={styles.containerDados}>
         <div className={styles.divLogo}>
           {/* APAGAR DEPOIS------------------------------------------- */}
-          <p>Login de  desenvolvimento <strong>dev@gmail.com senha dev</strong> </p>
+          <p>
+            Login de desenvolvimento <strong>dev@gmail.com senha dev</strong>{" "}
+          </p>
           {/* APAGAR DEPOIS------------------------------------------- */}
           <img src={Logo} alt="Logo da wilson sons" />
           <h1>Boas vindas ao Novo Portal SISPAR</h1>
