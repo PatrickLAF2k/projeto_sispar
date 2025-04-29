@@ -3,7 +3,7 @@ import { useState } from "react";
 import Logo from "../../assets/Tela_Login/logo_ws_sem_txt.png";
 import styles from "./Login.module.scss";
 import api from "../../Services/Api";
-import CadastroModal from "../../modals/cadastro/CadastroModal"; 
+import CadastroModal from "../../modals/cadastro/CadastroModal";
 
 function Login() {
   const navigate = useNavigate(); //Iniciando o hook useNavigate
@@ -16,10 +16,13 @@ function Login() {
   const abrirCadastro = () => {
     setMostrarCadastro(true); // Exibe o modal de cadastro
   };
-
   const fecharCadastro = () => {
     setMostrarCadastro(false); // Fecha o modal de cadastro
   };
+
+  if (email == "dev@gmail.com" && senha == "123456") {
+    navigate("/reembolsos"); // Redireciona para a página de reembolsos DESENVOLVIMENTO
+  }
 
   const fazerLogin = async (e) => {
     e.preventDefault(); // Previne o comportamento padrão do formulário
@@ -47,6 +50,9 @@ function Login() {
 
       <section className={styles.containerDados}>
         <div className={styles.divLogo}>
+          {/* APAGAR DEPOIS------------------------------------------- */}
+          <p>Login de  desenvolvimento <strong>dev@gmail.com senha dev</strong> </p>
+          {/* APAGAR DEPOIS------------------------------------------- */}
           <img src={Logo} alt="Logo da wilson sons" />
           <h1>Boas vindas ao Novo Portal SISPAR</h1>
           <p>Sistema de Emissão de Boletos e Parcelamento</p>
@@ -79,7 +85,9 @@ function Login() {
 
           <div className={styles.divButtons}>
             <button onClick={fazerLogin}>Entrar</button>
-            <button type="button" onClick={abrirCadastro}> Criar conta
+            <button type="button" onClick={abrirCadastro}>
+              {" "}
+              Criar conta
             </button>
           </div>
         </form>
