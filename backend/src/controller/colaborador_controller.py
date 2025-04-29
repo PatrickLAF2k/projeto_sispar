@@ -4,15 +4,36 @@ from src.model import db
 
 bp_colaborador = Blueprint("colaborador", __name__, url_prefix="/colaborador")
 
+
 @bp_colaborador.route("/cadastrar", methods=["POST"])
 def cadastrar_novo_colaborador():
     # Pega os dados enviados no corpo da requisição em formato JSON
     dados_requisicao = request.get_json()
+    # O mais proximo de uma desestruturação em Python
+    nome, email, senha, cargo, salario = (
+        dados_requisicao.get(key)
+        for key in ["nome", "email", "senha", "cargo", "salario"]
+    )
 
-    # Verifica se os campos obrigatórios 'nome' e 'cargo' estão vazios
-    if dados_requisicao["nome"] == "" or dados_requisicao["cargo"] == "":
-        # Retorna uma mensagem de erro e o status HTTP 400 (Bad Request)
+    # Verifica se todos os campos obrigatórios foram preenchidos
+    if not nome or not email or not senha or not cargo or not salario:
         return jsonify({"mensagem": "Todos os campos são obrigatorios!"}), 400
+
+    if not salario.isdigit():
+        return jsonify({"mensagem": "Salário deve conter apenas números!"}), 400
+
+    try:
+        salario = float(salario)
+    except ValueError:
+        return jsonify({"mensagem": "Salário só deve conter números!"}), 400
+
+    # Verifica se o colaborador já existe no banco de dados
+    colaborador_existente = db.session.execute(
+        db.select(Colaborador).where(Colaborador.email == email)
+    ).scalar()
+
+    if colaborador_existente:
+        return jsonify({"mensagem": "Colaborador já cadastrado!"}), 409
 
     # Cria uma nova instância de Colaborador com os dados recebidos
     novo_colaborador = Colaborador(
@@ -30,7 +51,7 @@ def cadastrar_novo_colaborador():
     db.session.commit()
 
     # Retorna uma mensagem de sucesso e o status HTTP 201 (Created)
-    return jsonify({"mensagem": "Colaborador cadastrado com sucesso!"}), 201
+    return jsonify({"mensagem": f"Colaborador {nome} cadastrado com sucesso!"}), 201
 
 
 @bp_colaborador.route("/login", methods=["POST"])
@@ -45,7 +66,6 @@ def login():
     colaborador = db.session.execute(
         db.select(Colaborador).where(Colaborador.email == email)
     ).scalar()
-    print(colaborador)
 
     if not colaborador:
         return jsonify({"mensagem": "Colaborador não encontrado!"}), 404
