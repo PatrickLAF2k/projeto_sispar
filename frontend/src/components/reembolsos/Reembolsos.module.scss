@@ -11,7 +11,7 @@
     height: 5%;
     width: 95%;
     margin-left: auto;
-    background-color: #00bedd;
+    
   }
 
   .mainReembolsos {
@@ -19,14 +19,14 @@
     height: 100%;
     margin-left: auto;
     display: flex;
-    background-color: #007a6a;
+    // background-color: #007a6a;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 32px;
 
     .containerTxtRembolsos {
-      // background-color: #00bedd;
+      
       display: flex;
       flex-direction: column;
       width: 50%;
@@ -53,16 +53,17 @@
         border-radius: 6px;
         border: 0.8px solid #cbd4e1;
         // background-color: #e56700;
-        transition: background-color 0.3s ease-in-out;
+        transition: 0.3s ease-in-out;
 
         &:hover {
           background-color: #f1f4f9;
           cursor: pointer;
-        }
 
-        p {
-          font-size: 1rem;
-          font-family: inter;
+          img,
+          h1 {
+            transform: scale(1.05);
+            transition: 0.3s;
+          }
         }
       }
     }
