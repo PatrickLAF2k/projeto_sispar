@@ -20,7 +20,7 @@ function Login() {
     setMostrarCadastro(false); // Fecha o modal de cadastro
   };
 
-  if (email == "dev@gmail.com" && senha == "123456") {
+  if (email == "dev@gmail.com" && senha == "dev") {
     navigate("/reembolsos"); // Redireciona para a página de reembolsos DESENVOLVIMENTO
   }
 
