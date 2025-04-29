@@ -29,10 +29,10 @@ function Rembolsos() {
       <main className={styles.mainReembolsos}>
         <div className={styles.containerTxtRembolsos}>
           <h1>Sistema de Reembolsos</h1>
-          <h>
+          <p>
             Solicite novos pedidos de reembolso, visualize solicitações em
             análise e todo o histórico.
-          </h>
+          </p>
         </div>
 
         <section className={styles.containerCards}>
