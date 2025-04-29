@@ -15,7 +15,7 @@ from config import Config
 def create_app():
     # Cria uma instância da aplicação Flask
     app = Flask(__name__)
-    CORS(app, origins="*")
+    CORS(app, origins='*')
 
     # Registra o blueprint do colaborador, conectando as rotas com a aplicação principal
     app.register_blueprint(bp_colaborador)
