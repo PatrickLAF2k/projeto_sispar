@@ -52,8 +52,9 @@ function Login() {
         <div className={styles.divLogo}>
           {/* APAGAR DEPOIS------------------------------------------- */}
           <p>
-            Login de desenvolvimento <strong>dev@gmail.com senha dev</strong>{" "}
+            Login de desenvolvimento <span style={{ color: "red" }}>dev@gmail.com</span> senha <span style={{ color: "red" }}>dev</span>
           </p>
+
           {/* APAGAR DEPOIS------------------------------------------- */}
           <img src={Logo} alt="Logo da wilson sons" />
           <h1>Boas vindas ao Novo Portal SISPAR</h1>
