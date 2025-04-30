@@ -259,6 +259,8 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
+        user-select: none;
+        pointer-events: none;
 
         label {
           font-weight: 700;
@@ -281,7 +283,6 @@
         align-items: center;
         justify-content: space-evenly;
         color: white;
-        border-radius: 6px;
         height: 45px;
         padding: 20px 12px;
       }

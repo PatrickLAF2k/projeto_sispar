@@ -6,6 +6,33 @@
   font-family: "Inter", sans-serif;
   
   button {
+    transition: transform 0.3s ease;
+    border-radius: 6px;
+    cursor: pointer;
     border: none;
+  
+    &:hover {
+      transform: translateY(-2px);
+    }
+  
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  input {
+    border-radius: 6px;
+    border: solid #cbd4e1 0.8px;
+    transition: 0.3s;
+  
+    &:hover {
+      border: #001a3d solid 1px;
+    }
+  
+    &:focus {
+      box-shadow: 0 0 5px #001a3d;
+      border: #001a3d solid 1px;
+      outline: none;
+    }
   }
 }
