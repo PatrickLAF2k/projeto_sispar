@@ -173,7 +173,7 @@ function Solicitacao() {
 
   return (
     <div className={styles.layoutBody}>
-      {/* <NavBar /> */}
+      <NavBar />
 
       {/* Azul */}
       <header className={styles.headerSolicitacao}>
