@@ -33,7 +33,7 @@ def cadastrar_novo_colaborador():
     ).scalar()
 
     if colaborador_existente:
-        return jsonify({"mensagem": "Colaborador já cadastrado!"}), 409
+        return jsonify({"mensagem": "Email já cadastrado!"}), 409
 
     # Cria uma nova instância de Colaborador com os dados recebidos
     novo_colaborador = Colaborador(
