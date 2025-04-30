@@ -20,37 +20,37 @@ function Solicitacao() {
   //setEstado: é a função que atualiza esse valor.
   // useState("")  O valor inicial é uma string vazia (""), ou seja, ainda não foi preenchido nada.
 
-  const [colaborador, setColaborador] = useState(""); // Estado para o campo colaborador
+  const [colaborador, setColaborador] = useState("Patrick Leonardo"); // Estado para o campo colaborador
 
-  const [empresa, setEmpresa] = useState(""); // Estado para o campo empresa
+  const [empresa, setEmpresa] = useState("VNW"); // Estado para o campo empresa
 
-  const [nPrestacao, setnPrestacao] = useState(""); // Estado para o campo número de prestação
+  const [nPrestacao, setnPrestacao] = useState("10"); // Estado para o campo número de prestação
 
-  const [descricao, setDescricao] = useState(""); // Estado para o campo  descrição
+  const [descricao, setDescricao] = useState("Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga blanditiis culpa, eius id veritatis reprehenderit nesciunt assumenda dolore labore, aperiam voluptates minima accusantium nemo, quas ratione! Distinctio debitis aperiam voluptate."); // Estado para o campo  descrição
 
-  const [data, setData] = useState(""); // Estado para o campo data
+  const [data, setData] = useState("29/04/2025"); // Estado para o campo data
 
-  const [motivo, setMotivo] = useState(""); // Estado para o campo motivo
+  const [motivo, setMotivo] = useState("teste"); // Estado para o campo motivo
 
-  const [tipoReembolso, setTipoReembolso] = useState(""); // Estado para o campo tipo de reembolso
+  const [tipoReembolso, setTipoReembolso] = useState("Energia Eletric"); // Estado para o campo tipo de reembolso
 
-  const [centroCusto, setCentroCusto] = useState(""); // Estado para o campo centro de custo
+  const [centroCusto, setCentroCusto] = useState("	FIN CONTROLES INTERNOS MTZ"); // Estado para o campo centro de custo
 
-  const [ordemInterna, setorOrdemInterna] = useState(""); // Estado para o campo ordem interna
+  const [ordemInterna, setorOrdemInterna] = useState("10"); // Estado para o campo ordem interna
 
-  const [divisao, setDivisao] = useState(""); // Estado para o campo divisão
+  const [divisao, setDivisao] = useState("2"); // Estado para o campo divisão
 
-  const [pep, setPep] = useState(""); // Estado para o campo pep
+  const [pep, setPep] = useState("teste"); // Estado para o campo pep
 
-  const [moeda, setMoeda] = useState(""); // Estado para o campo moeda
+  const [moeda, setMoeda] = useState("EURO"); // Estado para o campo moeda
 
-  const [distanciaKm, setDistanciaKm] = useState(""); // Estado para o campo distância km
+  const [distanciaKm, setDistanciaKm] = useState("100"); // Estado para o campo distância km
 
-  const [valorKm, setValorKm] = useState(""); // Estado para o campo valor km
+  const [valorKm, setValorKm] = useState("10"); // Estado para o campo valor km
 
-  const [valorFaturado, setValorFaturado] = useState(""); // Estado para o campo valor faturado
+  const [valorFaturado, setValorFaturado] = useState("10"); // Estado para o campo valor faturado
 
-  const [despesa, setDespesa] = useState(""); // Estado para o campo despesa
+  const [despesa, setDespesa] = useState("100"); // Estado para o campo despesa
 
   const [dadosReembolso, setDadosReembolso] = useState([]);
   // Esse é o array que irá receber os dados em formato de objeto
@@ -61,8 +61,8 @@ function Solicitacao() {
 
   useEffect(() => {
     if (enviado) {
-      setDadosReembolso([]); // Limpa os dados após o envio
-      setEnviado(false); // Reseta o estado de controle
+      // setDadosReembolso([]); // Limpa os dados após o envio
+      // setEnviado(false); // Reseta o estado de controle
     }
   }, [enviado]);
 
@@ -143,24 +143,24 @@ function Solicitacao() {
 
   //--------------FUNÇÃO DE LIMPAR OS INPUTS QUANDO CLICAR EM SALVAR -----------------------
 
-  const limparCampos = () => {
-    setColaborador(""),
-      setEmpresa(""),
-      setnPrestacao(""),
-      setDescricao(""),
-      setData(""),
-      setMotivo(""),
-      setTipoReembolso(""),
-      setCentroCusto(""),
-      setorOrdemInterna(""),
-      setDivisao(""),
-      setPep(""),
-      setMoeda(""),
-      setDistanciaKm(""),
-      setValorKm(""),
-      setValorFaturado(""),
-      setDespesa("");
-  };
+  // const limparCampos = () => {
+  //   setColaborador(""),
+  //     setEmpresa(""),
+  //     setnPrestacao(""),
+  //     setDescricao(""),
+  //     setData(""),
+  //     setMotivo(""),
+  //     setTipoReembolso(""),
+  //     setCentroCusto(""),
+  //     setorOrdemInterna(""),
+  //     setDivisao(""),
+  //     setPep(""),
+  //     setMoeda(""),
+  //     setDistanciaKm(""),
+  //     setValorKm(""),
+  //     setValorFaturado(""),
+  //     setDespesa("");
+  // };
 
   //---------------FUNÇÃO PARA LIMPAR TODA A LISTA, AO CLICAR NO BOTÃO CANCELAR REEMBOLSO ----
 
@@ -174,9 +174,8 @@ function Solicitacao() {
   return (
     <div className={styles.layoutBody}>
       <NavBar />
-
-      <div className={styles.containerPrincipalSolicitacao}>
-
+      
+        {/* Azul */ }
         <header className={styles.headerSolicitacao}>
           <img src={Home} alt="Vetor da casinha" />
           <img src={Seta} alt="Vetor da setinha" />
@@ -185,7 +184,8 @@ function Solicitacao() {
           <p>Solicitação de Reembolsos</p>
         </header>
         
-        {/* Aqui começa a seção de solicitação */}
+        {/* VERDE */}
+        
         <section className={styles.sectionSolicitacao}> 
                   
           <form
@@ -406,12 +406,12 @@ function Solicitacao() {
           
         </section>
 
-        {/* Aqui começa a tabela */}
+        {/* Rosa */}
         <section className={styles.sectionTable}>
         <table>
             <thead>
               <tr>
-                <th></th>
+                <th>X</th>
                 <th>Colaborador(a)</th>
                 <th>Empresa</th>
                 <th>Nº Prest.</th>
@@ -430,8 +430,8 @@ function Solicitacao() {
               </tr>
             </thead>
 
-            <tbody>
-              {dadosReembolso.map((item, index) => (
+            <tbody> {dadosReembolso.map((item, index) => (
+              
                 <tr key={index}>
                   <td>
                     <button
@@ -472,7 +472,8 @@ function Solicitacao() {
             </tbody>
           </table>
         </section>
-
+        
+        {/* Laranja */}
         <footer className={styles.footerSolicitacao}>
           <section>
             <div className={styles.inputFooter}>
@@ -489,17 +490,8 @@ function Solicitacao() {
               />
             </div>
 
-            {/* 
-.reduce serve para percorrer a lista inteira e somar os valores de valorFaturado/despesa.
-Soma o total atual com o valor da despesa do item.
-Usa Number(...) para garantir que seja um número (evita erros caso venha uma string).
-O 0 no final é o valor inicial da soma
-
-Usa item.despesa || 0 para evitar undefined — se não tiver valor, ele usa 0.
-.tofixed: Ele formata o número com 2 casas decimais.
-Mesmo que a soma dê 150, ele vai mostrar 150.00.
-Se a soma for 10.5, vai mostrar 10.50. */}
-            <div>
+            {/* .reduce serve para percorrer a lista inteira e somar os valores de valorFaturado/despesa. Soma o total atual com o valor da despesa do item. Usa Number(...) para garantir que seja um número (evita erros caso venha uma string). O 0 no final é o valor inicial da soma Usa item.despesa || 0 para evitar undefined — se não tiver valor, ele usa 0. .tofixed: Ele formata o número com 2 casas decimais. Mesmo que a soma dê 150, ele vai mostrar 150.00. Se a soma for 10.5, vai mostrar 10.50. */}
+            <div className={styles.inputFooter}>
               <label> Total Despesa </label>
               <input
                 type="text"
@@ -510,25 +502,17 @@ Se a soma for 10.5, vai mostrar 10.50. */}
             </div>
 
             <div className={styles.boxButtonFooter}>
-              <button
-                className={styles.buttonAnalise}
-                onClick={enviarParaAnalise}
-              >
-                {" "}
-                <img src={Check} alt="" /> Enviar para Análise{" "}
+              <button className={styles.buttonAnalise} onClick={enviarParaAnalise} >
+                {" "} <img src={Check} alt="" /> Enviar para Análise{" "}
               </button>
 
-              <button
-                className={styles.buttonCancelar}
-                onClick={cancelarSolicitacao}
-              >
-                {" "}
-                <img src={Cancelar} alt="" /> Cancelar Solicitação{" "}
+              <button className={styles.buttonCancelar} onClick={cancelarSolicitacao} >
+                {" "} <img src={Cancelar} alt="" /> Cancelar Solicitação{" "}
               </button>
             </div>
           </section>
         </footer>
-      </div>
+      
     </div>
   );
 }
