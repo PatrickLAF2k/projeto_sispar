@@ -4,7 +4,6 @@
   width: 100vw;
   height: 100vh;
   padding-right: 1%;
-  // background-color: #cae0ff;
 
   .headerSolicitacao {
     display: flex;
@@ -13,14 +12,12 @@
     height: 5%;
     width: 95%;
     margin-left: auto;
-    background-color: #00bedd;
   }
 
   .sectionSolicitacao {
     width: 95%;
     height: 25vh;
     margin-left: auto;
-    background-color: #94f599;
 
     form {
       display: flex;
@@ -35,22 +32,18 @@
         padding-right: 8px;
 
         .inputNome {
-          // border: solid red;
           width: 45%;
         }
 
         .inputEmpresa {
-          //border: solid blue;
           width: 25%;
         }
 
         .inputPrestacao {
-          //  border: solid green;
           width: 25%;
         }
 
         .inputMotivo {
-          // border: solid orange;
           width: 100%;
 
           textarea {
@@ -93,19 +86,13 @@
           width: 30%;
 
           select {
-            //seletor todo
             background-image: url("../../assets/Solicitacao/seta.png");
             background-repeat: no-repeat;
             background-position: right;
             text-align: center;
             cursor: pointer;
-            appearance: none; /* Remove a aparência do seletor */
+            appearance: none;
           }
-
-          // option {
-          //   //dentro do seletor
-          //   // background-color: #bee433;
-          // }
 
           ::-ms-expand {
             background-color: #00bedd;
@@ -114,29 +101,25 @@
 
         .moeda {
           select {
-            //seletor todo
             background-image: url("../../assets/Solicitacao/seta.png");
             background-repeat: no-repeat;
             background-position: right;
-            // background-size: 50%;
             text-align: center;
             cursor: pointer;
-            appearance: none; /* Remove a aparência do seletor */
+            appearance: none;
           }
         }
 
         .centroDeCusto {
-          //border: solid purple;
           width: 45%;
 
           select {
-            //seletor todo
             background-image: url("../../assets/Solicitacao/seta.png");
             background-repeat: no-repeat;
             background-position: right;
             text-align: center;
             cursor: pointer;
-            appearance: none; /* Remove a aparência do seletor */
+            appearance: none;
           }
         }
 
@@ -144,19 +127,16 @@
         .divisoes,
         .pep,
         .distancia {
-          // border: solid red;
           width: 8%;
         }
 
         .valorKm,
         .valorFaturado,
         .despesa {
-          // border: solid pink;
           width: 11%;
         }
 
         .botoes {
-          //border: solid red;
           width: 15%;
           display: flex;
           justify-content: space-around;
@@ -199,130 +179,123 @@
   }
 
   .sectionTable {
-    background-color: #e8aaf5;
     width: 95%;
     height: 62vh;
+    border-radius: 6px;
     margin-left: auto;
     overflow: auto;
+    border: solid #cbd4e1 0.8px;
+    color: #23282f;
 
     table {
       width: 100%;
-      // border-collapse: collapse;
-      border-radius: 6px;
-      border: solid #e1cbcb 0.8px;
-      // background-color: #c4f0a7;
-      border-radius: 6px;
+      border-collapse: collapse;
 
       thead {
-        border-radius: 6px;
-
         tr {
-          border-radius: 6px;
-
           text-align: center;
+
           th {
-            border-radius: 6px;
+            border: solid #cbd4e1 0.8px;
+            border-top: none;
+            border-left: none;
+            background-color: #f1f4f9;
             font-weight: 400;
-            text-align: center;
+            padding: 10px;
           }
         }
       }
 
       tbody {
         tr {
+          &:hover {
+            background-color: #f1f4f9;
+          }
           td {
-            th {
+            text-align: center;
+            padding: 12px;
+            border: solid #cbd4e1 0.8px;
+            border-left: none;
+            color: #23282f;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 120px;
+
+            transition: background-color 0.2s;
+
+            &:has(.btnLixeira:hover) {
+              background-color: #001a3d;
             }
+          }
+
+          // Estilos especiais para colunas com textos maiores
+          .colaborador,
+          .empresa,
+          .tipoReembolso,
+          .centroCusto,
+          .ordemInterna {
+            max-width: 150px;
           }
         }
       }
     }
   }
 
-  //Estilizzação padrão para os inputs, select , label e textarea
+  .footerSolicitacao {
+    display: flex;
+    width: 95%;
+    margin-left: auto;
+    height: 10vh;
 
-  //Estilizção do grupo1
+    section {
+      display: flex;
+      margin-left: auto;
+      width: 50%;
+      justify-content: space-evenly;
+      align-items: center;
 
-  //Estilização da barra vertical
+      .inputFooter {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
 
-  //Estilizção do grupo2
+        label {
+          font-weight: 700;
+          color: #23282f;
+        }
 
-  //Estilização da tabela
+        input {
+          border-radius: 6px;
+          border: solid #cbd4e1 0.8px;
+          height: 45px;
+          padding: 12px, 13px;
+        }
+      }
 
-  //Cabeçalho
-
-  // th,
-  // td {
-  //   border: solid;
-  //   text-align: center;
-  // }
-
-  .btnLixeira {
-    border: none;
-    :hover {
-      background-color: #a60b2f;
-      border-radius: 6px;
+      .buttonAnalise,
+      .buttonCancelar {
+        background-color: #001a3d;
+        display: flex;
+        width: 20%;
+        align-items: center;
+        justify-content: space-evenly;
+        color: white;
+        border-radius: 6px;
+        height: 45px;
+        padding: 20px 12px;
+      }
+      .buttonCancelar {
+        background-color: #a60b2f;
+      }
     }
   }
 
-  //Footer
-
-  .footerSolicitacao {
-    // background-color: pink;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 100%;
-    height: 10vh;
-    background-color: #e9a489;
-
-    section {
-      
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      width: 50%;
-      height: 15vh;
-
-      .inputFooter{
-
-      }
-
-      .boxButtonFooter{
-        button{
-
-        }
-      }
-    }
-
-    
-
-    .boxButtonFooter {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: center;
-      width: 50%;
-
-      .buttonAnalise {
-        background-color: #001a3d;
-        width: 40%;
-        height: 6vh;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        color: white;
-      }
-
-      .buttonCancelar {
-        background-color: #a60b2f;
-        width: 40%;
-        height: 6vh;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        color: white;
-      }
-    }
+  .ellipsis {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
   }
 }
