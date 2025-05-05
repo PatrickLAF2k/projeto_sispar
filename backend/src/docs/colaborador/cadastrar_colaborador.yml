@@ -1,0 +1,36 @@
+tags:
+  - Colaborador
+description: Endpoint para cadastrar um colaborador.
+
+parameters:
+  - in: body  
+    name: corpo
+    required: true
+
+    schema:
+      type: object
+      properties:
+        nome:
+          type: string
+          example: Eduardo da costa e silva
+        email:
+          type: string
+          example: eduardo@email.com
+        senha:
+          type: string
+          example: 123456
+        cargo:
+          type: string
+          example: Gerente de TI
+        salario:
+          type: number
+          example: 5000.00
+required:
+    - nome
+    - email
+    - senha
+    - cargo
+    - salario
+responses:
+  201:
+    description: Collaborador cadastrado com sucesso.
