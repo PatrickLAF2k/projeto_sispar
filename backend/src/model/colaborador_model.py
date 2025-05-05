@@ -2,9 +2,10 @@ from src.model import db
 from sqlalchemy.schema import Column
 from sqlalchemy.types import String, DECIMAL, Integer
 
+
 class Colaborador(db.Model):
     # Define manualmente o nome da tabela no banco de dados como 'colaborador'
-    __tablename__ = 'colaborador'
+    __tablename__ = "colaborador"
 
     # Coluna 'id' como chave primária com autoincremento
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -16,7 +17,7 @@ class Colaborador(db.Model):
     email = Column(String(100), nullable=False, unique=True)
 
     # Senha do colaborador
-    senha = Column(String(50), nullable=False)
+    senha = Column(String(100), nullable=False)
 
     # Cargo/função do colaborador
     cargo = Column(String(50), nullable=False)
@@ -31,3 +32,12 @@ class Colaborador(db.Model):
         self.senha = senha
         self.cargo = cargo
         self.salario = salario
+
+    def to_dict(self) -> dict:
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "email": self.email,
+            "cargo": self.cargo,
+            "salario": self.salario,
+        }
