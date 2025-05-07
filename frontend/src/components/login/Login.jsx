@@ -6,7 +6,7 @@ import api from "../../Services/Api";
 import CadastroModal from "../../modals/cadastro/CadastroModal";
 
 function Login() {
-  const navigate = useNavigate(); //Iniciando o hook useNavigate
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -14,28 +14,29 @@ function Login() {
   const [mostrarCadastro, setMostrarCadastro] = useState(false);
 
   const abrirCadastro = () => {
-    setMostrarCadastro(true); // Exibe o modal de cadastro
+    setMostrarCadastro(true);
   };
   const fecharCadastro = () => {
-    setMostrarCadastro(false); // Fecha o modal de cadastro
+    setMostrarCadastro(false);
   };
 
   const fazerLogin = async (e) => {
-    e.preventDefault(); // Previne o comportamento padrão do formulário
+    e.preventDefault();
 
     try {
-      if (email == "dev@gmail.com" && senha == "dev") {
-        navigate("/reembolsos"); // Redireciona para a página de reembolsos DESENVOLVIMENTO
-      }
-
       const resposta = await api.post("/colaborador/login", {
         email: email,
         senha: senha,
       });
-
+      
+      const token = resposta.data.token;
+      localStorage.setItem("$token", token);
+      
       if (resposta.status === 200) {
+        
+        
         alert("Login realizado com sucesso!");
-        navigate("/reembolsos"); // Redireciona para a página de reembolsos
+        navigate("/reembolsos");
       }
     } catch (error) {
       if (error.response) {
@@ -50,12 +51,6 @@ function Login() {
 
       <section className={styles.containerDados}>
         <div className={styles.divLogo}>
-          {/* APAGAR DEPOIS------------------------------------------- */}
-          <p>
-            Login de desenvolvimento <span style={{ color: "red" }}>dev@gmail.com</span> senha <span style={{ color: "red" }}>dev</span>
-          </p>
-
-          {/* APAGAR DEPOIS------------------------------------------- */}
           <img src={Logo} alt="Logo da wilson sons" />
           <h1>Boas vindas ao Novo Portal SISPAR</h1>
           <p>Sistema de Emissão de Boletos e Parcelamento</p>
