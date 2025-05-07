@@ -37,6 +37,7 @@
   }
 
   .divFotoPerfil {
+    // background-color: #5583e9;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -53,11 +54,12 @@
     }
 
     h3 {
+      width: 10vw;
       visibility: hidden;
-      white-space: nowrap;
       overflow: hidden;
       opacity: 0;
       transition: opacity 1s ease-in-out;
+      text-align: center;
     }
 
     p {
