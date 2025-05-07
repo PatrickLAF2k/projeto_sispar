@@ -4,30 +4,47 @@ import Home from "../../assets/Header/botão - Home.png";
 import Pesquisa from "../../assets/Header/Botão - Pesquisa.png";
 import Reembolso from "../../assets/Header/Botão - Reembolso.png";
 import Sair from "../../assets/Header/Botão - Sair.png";
-import Perfil from "../../assets/Header/image.png";
 import Fechar from "../../assets/Header/imagem-fechar-header.png";
 import styles from "./NavBar.module.scss";
-import fotoPerfil from "../../assets/Tela_Login/fotoPerfilPatrick.jpg"
+import fotoPerfil from "../../assets/Header/perfil.png";
+import { useEffect, useState } from "react";
+import Api from "../../Services/Api";
 
 function NavBar() {
   const navigate = useNavigate();
+  const [colaborador, setColaborador] = useState(null);
+
+  useEffect(() => {
+    const buscarDados = async () => {
+      const token = localStorage.getItem("$token");
+      const response = await Api.get("/colaborador/dados", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setColaborador(response.data);
+    };
+    buscarDados();
+  }, []);
 
   return (
     <nav className={styles.navBar}>
-
       {/* ABRIR E FECHAR */}
       <button className={styles.buttonAbrirFechar}>
         <img src={Fechar} alt="Botão abrir e fechar" />
       </button>
 
       {/* FOTO PERFIL */}
-      <div className={styles.divFotoPerfil}>
-      <img src={fotoPerfil} alt="Foto do perfil" />
-        <h3>Patrick leonardo</h3>
-        <p>Programador Senior</p>
+      {colaborador && (
+        <>
+          <div className={styles.divFotoPerfil}>
+            <img src={colaborador.foto_url == "None" ? fotoPerfil : colaborador.foto_url || fotoPerfil }  alt="Foto do perfil" />
+            <h3>{colaborador.nome}</h3>
+            <p>{colaborador.cargo}</p>
+          </div>
+        </>
+      )}
 
-      </div>
-      
       <section>
         <div>
           {/* INICIO */}
