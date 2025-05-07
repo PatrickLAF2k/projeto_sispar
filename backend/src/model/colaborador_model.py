@@ -25,19 +25,25 @@ class Colaborador(db.Model):
     # Salário (com 2 casas decimais)
     salario = Column(DECIMAL(10, 2), nullable=False)
 
+    # Foto
+    foto_url = Column(String(200), nullable=True)
+
     # Método construtor para facilitar a criação de objetos Colaborador
-    def __init__(self, nome, email, senha, cargo, salario):
+    def __init__(self, nome, email, senha, cargo, salario, foto_url=None):
         self.nome = nome
         self.email = email
         self.senha = senha
         self.cargo = cargo
         self.salario = salario
+        self.foto_url = foto_url
 
     def to_dict(self) -> dict:
+        return {"id": self.id}
+
+    def dados(sefl) -> dict:
         return {
-            "id": self.id,
-            "nome": self.nome,
-            "email": self.email,
-            "cargo": self.cargo,
-            "salario": self.salario,
+            "nome": sefl.nome,
+            "email": sefl.email,
+            "cargo": sefl.cargo,
+            "foto_url": sefl.foto_url
         }
