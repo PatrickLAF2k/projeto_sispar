@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import styles from "./Reembolsos.module.scss";
 import Home from "../../assets/Dashboard/home header.png";
 import Seta from "../../assets/Dashboard/Vector.png";
@@ -10,16 +11,45 @@ import NumeroSolicitados from "../../assets/Dashboard/N-Solicitados.png";
 import Sistema from "../../assets/Dashboard/Sistema-atualizado.png";
 import SolicitarHistorico from "../../assets/Dashboard/Solicitar - Histórico.png";
 import SolicitarReembolso from "../../assets/Dashboard/Solicitar - Reembolso.png";
-//importando a NavBar no Reembolsos
-import NavBar from "../navbar/NavBar.jsx";
+import Api from "../../Services/Api.jsx";
 
 function Rembolsos() {
   const navigate = useNavigate();
+  const [totalSolicitacoes, setTotalSolicitacoes] = useState(0);
+  const [totalEmAnalise, setTotalEmAnalise] = useState(0);
+  const [totalAprovados, setTotalAprovados] = useState(0);
+  const [totalRejeitados, setTotalRejeitados] = useState(0);
+
+  useEffect(() => {
+    const buscarSolicitacoes = async () => {
+      try {
+        const token = localStorage.getItem("$token");
+        const response = await Api.get("/reembolso/listar", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const dados = response.data;
+        setTotalSolicitacoes(dados.length);
+        setTotalEmAnalise(
+          dados.filter((item) => item.status === "Em análise").length
+        );
+        setTotalAprovados(
+          dados.filter((item) => item.status === "Aprovado").length
+        );
+        setTotalRejeitados(
+          dados.filter((item) => item.status === "Rejeitado").length
+        );
+      } catch (error) {
+        console.error("Erro ao enviar:", error);
+      }
+    };
+
+    buscarSolicitacoes();
+  }, []);
 
   return (
     <div className={styles.body}>
-      <NavBar />
-
       <header className={styles.headerRembolsos}>
         <img src={Home} alt="Casinha da header" />
         <img src={Seta} alt="Setinha da header" />
@@ -63,19 +93,19 @@ function Rembolsos() {
               src={NumeroSolicitados}
               alt=""
             />
-            <h4>182</h4>
+            <h4>{totalSolicitacoes}</h4>
             <p>Solicitados</p>
           </div>
 
           <div>
             <img className={styles.imgAnalise} src={NumeroAnalises} alt="" />
-            <h4>74</h4>
+            <h4>{totalEmAnalise}</h4>
             <p>Em análise</p>
           </div>
 
           <div>
             <img className={styles.imgAprovados} src={NumeroAprovados} alt="" />
-            <h4>195</h4>
+            <h4>{totalAprovados}</h4>
             <p>Aprovados</p>
           </div>
 
@@ -85,7 +115,7 @@ function Rembolsos() {
               src={NumeroRejeitados}
               alt=""
             />
-            <h4>41</h4>
+            <h4>{totalRejeitados}</h4>
             <p>Rejeitados</p>
           </div>
         </section>
@@ -98,4 +128,5 @@ function Rembolsos() {
     </div>
   );
 }
+
 export default Rembolsos;
