@@ -12,7 +12,7 @@ load_dotenv()
 class Config:
     # Configura a URI de conexão com o banco de dados, usando a variável de ambiente `URL_DATABASE_DEV`
     # Essa variável deve estar definida no arquivo `.env`
-    SQLALCHEMY_DATABASE_URI = environ.get('URL_DATABASE_DEV')
+    SQLALCHEMY_DATABASE_URI = environ.get('URL_DATABASE_PROD')
 
     # Desativa o sistema de rastreamento de modificações do SQLAlchemy (melhora o desempenho e evita warning)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
