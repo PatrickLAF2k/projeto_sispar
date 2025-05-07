@@ -15,14 +15,15 @@ bp_colaborador = Blueprint("colaborador", __name__, url_prefix="/colaborador")
 
 
 @bp_colaborador.route("/cadastrar", methods=["POST"])
-@swag_from("../docs/colaborador/cadastrar_colaborador.yml")
+@swag_from("../../docs/colaborador/cadastrar_colaborador.yml")
 def cadastrar_novo_colaborador():
+    data = request.get_json()
 
-    nome = request.form.get("nome")
-    email = request.form.get("email")
-    senha = request.form.get("senha")
-    cargo = request.form.get("cargo")
-    salario = request.form.get("salario")
+    nome = data.get("nome")
+    email = data.get("email")
+    senha = data.get("senha")
+    cargo = data.get("cargo")
+    salario = data.get("salario")
     foto = request.files.get("foto")
 
     try:
