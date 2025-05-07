@@ -1,4 +1,4 @@
-from flask import Flask, session
+from flask import Flask
 from flask_cors import CORS
 from dotenv import load_dotenv
 from src.controller.colaborador_controller import bp_colaborador
@@ -6,7 +6,7 @@ from src.controller.reembolso_controller import bp_reembolso
 from src.model import db
 from config import Config
 from flasgger import Swagger
-
+import cloudinary
 import os
 
 Swagger_config = {
@@ -38,6 +38,9 @@ def create_app():
     # Define a chave secreta a partir da variável de ambiente
     app.secret_key = os.getenv("SECRET_KEY")
 
+    # Configura o Cloudinary usando as variáveis de ambiente
+    cloudinary.config(cloudinary_url=os.getenv("CLOUDINARY_URL"))
+
     # Registra os blueprints
     app.register_blueprint(bp_colaborador)
     app.register_blueprint(bp_reembolso)
@@ -45,9 +48,10 @@ def create_app():
     # Carrega as configurações
     app.config.from_object(Config)
 
-    # Carrega as configurações
+    # Inicializa o banco de dados
     db.init_app(app)
 
+    # Configura o Swagger
     Swagger(app, config=Swagger_config)
 
     # Cria as tabelas no banco
