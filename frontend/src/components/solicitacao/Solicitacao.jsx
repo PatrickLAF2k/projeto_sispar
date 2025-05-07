@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import NavBar from "../navbar/NavBar.jsx";
 import styles from "./Solicitacao.module.scss";
 import Home from "../../assets/Dashboard/home header.png";
 import Seta from "../../assets/Dashboard/Vector.png";
@@ -14,11 +13,11 @@ import Api from "../../Services/Api.jsx";
 function Solicitacao() {
   const [colaborador, setColaborador] = useState("");
   const [empresa, setEmpresa] = useState("");
-  const [nPrestacao, setNPrestacao] = useState("");
+  const [numeroPrestacao, setNPrestacao] = useState("");
   const [descricao, setDescricao] = useState("");
   const [data, setData] = useState("");
-  const [tipo_reembolso, setTipoReembolso] = useState("");
-  const [centro_custo, setCentroCusto] = useState("");
+  const [tipoReembolso, setTipoReembolso] = useState("");
+  const [centroCusto, setCentroCusto] = useState("");
   const [ordemInterna, setOrdemInterna] = useState("");
   const [divisao, setDivisao] = useState("");
   const [pep, setPep] = useState("");
@@ -27,9 +26,11 @@ function Solicitacao() {
   const [valorKm, setValorKm] = useState("");
   const [valorFaturado, setValorFaturado] = useState("");
   const [despesas, setDespesas] = useState("");
-  const [id_colaborador, setIdColaborador] = useState("1");
+
   const [dadosReembolso, setDadosReembolso] = useState([]);
+
   const [enviado, setEnviado] = useState(false);
+  
 
   useEffect(() => {
     if (enviado) {
@@ -47,11 +48,11 @@ function Solicitacao() {
     const objetoReembolso = {
       colaborador,
       empresa,
-      numero_prestacao: nPrestacao,
+      numero_prestacao: numeroPrestacao,
       descricao,
       data,
-      tipo_reembolso,
-      centro_custo,
+      tipo_reembolso: tipoReembolso,
+      centro_custo: centroCusto,
       ordem_interna: ordemInterna,
       divisao,
       pep,
@@ -60,7 +61,6 @@ function Solicitacao() {
       valor_km: valorKm,
       valor_faturado: valorFaturado,
       despesas,
-      id_colaborador,
     };
 
     setDadosReembolso([...dadosReembolso, objetoReembolso]);
@@ -74,9 +74,12 @@ function Solicitacao() {
     }
 
     try {
-      // Substitua pela forma correta de obter o token, se necessário;
-      const response = await Api.post("/reembolso/solicitar", dadosReembolso, {
-        
+      const token = localStorage.getItem("$token");
+
+      await Api.post("/reembolso/solicitar", dadosReembolso, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       setEnviado(true);
       alert("Solicitação enviada com sucesso!");
@@ -115,7 +118,7 @@ function Solicitacao() {
 
   return (
     <div className={styles.layoutBody}>
-      <NavBar />
+      {/* <NavBar /> */}
 
       {/* Azul */}
       <header className={styles.headerSolicitacao}>
@@ -156,7 +159,7 @@ function Solicitacao() {
               <label htmlFor="nPrestacao">Nº Prest. Contas</label>
               <input
                 id="nPrestacao"
-                value={nPrestacao}
+                value={numeroPrestacao}
                 onChange={(e) => setNPrestacao(e.target.value)}
                 type="number"
                 name="nPrestacao"
@@ -190,7 +193,7 @@ function Solicitacao() {
               <label htmlFor="tipo_reembolso">Tipo de Despesa</label>
               <select
                 id="tipo_reembolso"
-                value={tipo_reembolso}
+                value={tipoReembolso}
                 name="tipo_reembolso"
                 onChange={(e) => setTipoReembolso(e.target.value)}
               >
@@ -209,7 +212,7 @@ function Solicitacao() {
               <label htmlFor="centro_custo">Centro de Custo</label>
               <select
                 id="centro_custo"
-                value={centro_custo}
+                value={centroCusto}
                 onChange={(e) => setCentroCusto(e.target.value)}
                 name="centro_custo"
               >
