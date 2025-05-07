@@ -25,6 +25,9 @@ parameters:
         salario:
           type: number
           example: 5000.00
+        foto_url:
+          type: file
+          example: None
 required:
     - nome
     - email
