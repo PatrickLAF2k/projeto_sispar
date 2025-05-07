@@ -33,7 +33,6 @@ class Reembolso(db.Model):
         colaborador,
         empresa,
         numero_prestacao,
-        descricao,
         data,
         tipo_reembolso,
         centro_custo,
@@ -46,6 +45,7 @@ class Reembolso(db.Model):
         valor_faturado,
         despesas,
         id_colaborador,
+        descricao,
         status = "Em análise",
     ):
         self.colaborador = colaborador
@@ -60,7 +60,7 @@ class Reembolso(db.Model):
         self.pep = pep
         self.moeda = moeda
         self.distancia_km = distancia_km
-        self.valo_km = valor_km
+        self.valor_km = valor_km
         self.valor_faturado = valor_faturado
         self.despesas = despesas
         self.id_colaborador = id_colaborador
