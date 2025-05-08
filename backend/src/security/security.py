@@ -12,7 +12,8 @@ JWT_ALGORITHM = os.getenv("JWT_ALGORITHM")
 
 def hash_senha(senha):
     salt = bcrypt.gensalt()
-    return bcrypt.hashpw((senha.encode("utf-8")), salt)
+    hashed = bcrypt.hashpw((senha.encode("utf-8")), salt)
+    return hashed.decode("utf-8")
 
 
 def verificar_senha(senha, senha_hash):
