@@ -50,11 +50,14 @@ function NavBar() {
       setColaborador((prev) => ({
         ...prev,
         foto_url: response.data.foto_url,
+        fotoUrlPerfil: `https://res.cloudinary.com/dq7znrrnf/image/upload/${response.data.foto_url}`,
       }));
     } catch (error) {
       console.error("Erro ao enviar foto:", error);
     }
   };
+
+  // console.log(colaborador.foto_url);
 
   return (
     <nav className={styles.navBar}>
@@ -85,12 +88,14 @@ function NavBar() {
             </div>
             <img
               src={
-                colaborador.foto_url == "None"
+                !colaborador?.fotoUrlPerfil ||
+                colaborador.fotoUrlPerfil === "None"
                   ? fotoPerfil
-                  : colaborador.foto_url || fotoPerfil
+                  : colaborador.fotoUrlPerfil
               }
               alt="Foto do perfil"
             />
+
             <h3>{colaborador.nome}</h3>
             <p>{colaborador.cargo}</p>
           </div>
