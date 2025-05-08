@@ -11,13 +11,13 @@ class Colaborador(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
 
     # Nome completo do colaborador
-    nome = Column(String(100), nullable=False)
+    nome = Column(String(65), nullable=False)
 
     # E-mail único
-    email = Column(String(100), nullable=False, unique=True)
+    email = Column(String(65), nullable=False, unique=True)
 
     # Senha do colaborador
-    senha = Column(String(100), nullable=False)
+    senha = Column(String(65), nullable=False)
 
     # Cargo/função do colaborador
     cargo = Column(String(50), nullable=False)
@@ -26,7 +26,7 @@ class Colaborador(db.Model):
     salario = Column(DECIMAL(10, 2), nullable=False)
 
     # Foto
-    foto_url = Column(String(100), nullable=True)
+    foto_url = Column(String(65), nullable=True)
 
     # Método construtor para facilitar a criação de objetos Colaborador
     def __init__(self, nome, email, senha, cargo, salario, foto_url=None):
