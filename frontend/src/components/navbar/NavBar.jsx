@@ -8,7 +8,7 @@ import Pesquisa from "../../assets/Header/Botão - Pesquisa.png";
 import Reembolso from "../../assets/Header/Botão - Reembolso.png";
 import Sair from "../../assets/Header/Botão - Sair.png";
 import Fechar from "../../assets/Header/imagem-fechar-header.png";
-import styles from "./NavBar.module.sscss";
+import styles from "./NavBar.module.scss";
 import fotoPerfil from "../../assets/Header/perfil.png";
 import editFoto from "../../assets/Header/editButton.png";
 
