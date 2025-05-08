@@ -36,6 +36,27 @@
   }
 
   .divFotoPerfil {
+    .alterarFoto {
+      img {
+        width: 10%;
+        height: auto;
+        position: absolute;
+        margin: -5px 20px;
+        cursor: pointer;
+        display: none;
+      }
+
+      input {
+        display: none;
+      }
+    }
+    &:hover {
+      .alterarFoto {
+        img {
+          display: block;
+        }
+      }
+    }
     display: flex;
     width: 100%;
     flex-direction: column;
