@@ -26,7 +26,7 @@ class Colaborador(db.Model):
     salario = Column(DECIMAL(10, 2), nullable=False)
 
     # Foto
-    foto_url = Column(String(200), nullable=True)
+    foto_url = Column(String(100), nullable=True)
 
     # Método construtor para facilitar a criação de objetos Colaborador
     def __init__(self, nome, email, senha, cargo, salario, foto_url=None):
