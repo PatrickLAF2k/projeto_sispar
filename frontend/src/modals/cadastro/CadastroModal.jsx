@@ -10,29 +10,25 @@ export default function CadastroModal({ fecharModal }) {
   const [senha, setSenha] = useState(""); // Estado para o campo senha
   const [cargo, setCargo] = useState(""); // Estado para o campo cargo
   const [salario, setSalario] = useState(""); // Estado para o campo salário
-  const [foto, setfoto] = useState(""); // Estado apra foto de perfil
   const [mensagemErro, setMensagemErro] = useState(""); // Estado para a mensagem de erro
 
   // Função para cadastrar o colaborador
   const cadastrarColaborador = async (e) => {
     e.preventDefault(); // Impede o comportamento padrão do formulário (recarregar a página)
 
-    const formData = new FormData();
-    formData.append("nome", nome);
-    formData.append("email", email);
-    formData.append("senha", senha);
-    formData.append("cargo", cargo);
-    formData.append("salario", salario);
-    formData.append("foto", foto);
-
-
+    const colaborador = {
+      nome,
+      email,
+      senha,
+      cargo,
+      salario,
+      foto_url:"None",
+    };
 
     try {
       // Envia uma requisição POST para o backend com os dados do colaborador
-      const resposta = await api.post("/colaborador/cadastrar", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      const resposta = await api.post("/colaborador/cadastrar", colaborador, {
+        
       });
 
       // Se o cadastro for bem-sucedido (status 201), exibe a mensagem de sucesso
@@ -89,12 +85,6 @@ export default function CadastroModal({ fecharModal }) {
             placeholder="Salário"
             value={salario}
             onChange={(e) => setSalario(e.target.value)}
-          />
-
-          <input
-            type="file"
-            name="foto"
-            onChange={(e) => setfoto(e.target.files[0])}
           />
 
           <div className={styles.modalButtons}>
