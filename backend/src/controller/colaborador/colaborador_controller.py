@@ -109,25 +109,13 @@ def foto():
     except Exception as e:
         return jsonify({"erro": str(e)}), 401
 
+    upload_result = cloudinary.uploader.upload(foto)
+    foto_url = upload_result.get("secure_url")
+
     try:
-        # Fazendo o upload da foto para o Cloudinary
-        upload_result = cloudinary.uploader.upload(foto)
-        url = upload_result.get("secure_url")
-
-        # Função para extrair a parte relevante da URL
-        prefixo = "https://res.cloudinary.com/dq7znrrnf/image/upload/"
-        if url.startswith(prefixo):
-            foto_url = url[len(prefixo) :]  # Pega o caminho após o prefixo
-        else:
-            return jsonify({"erro": "URL inválida"}), 400
-
-        # Atualizando a URL da foto no banco de dados
         colaborador = db.session.get(Colaborador, id)
-        if colaborador:
-            colaborador.foto_url = foto_url
-            db.session.commit()
-        else:
-            return jsonify({"erro": "Colaborador não encontrado"}), 404
+        colaborador.foto_url = foto_url
+        db.session.commit()
     except Exception as e:
         return jsonify({"erro": str(e)}), 500
 
