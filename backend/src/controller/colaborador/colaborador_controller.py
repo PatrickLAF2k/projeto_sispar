@@ -45,6 +45,7 @@ def cadastrar_novo_colaborador():
             salario=salario,
             foto_url="",
         )
+        print("Tamanho senha:", len(hash_senha(senha)))
 
         # Adiciona o novo colaborador à sessão do banco de dados
         db.session.add(novo_colaborador)
