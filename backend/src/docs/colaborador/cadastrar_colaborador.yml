@@ -25,6 +25,7 @@ parameters:
         salario:
           type: number
           example: 5000.00
+
 required:
     - nome
     - email

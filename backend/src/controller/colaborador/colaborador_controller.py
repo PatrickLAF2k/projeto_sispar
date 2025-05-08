@@ -15,20 +15,17 @@ bp_colaborador = Blueprint("colaborador", __name__, url_prefix="/colaborador")
 
 
 @bp_colaborador.route("/cadastrar", methods=["POST"])
-@swag_from("../docs/colaborador/cadastrar_colaborador.yml")
+@swag_from("../../docs/colaborador/cadastrar_colaborador.yml")
 def cadastrar_novo_colaborador():
+    data = request.get_json()
 
-    nome = request.form.get("nome")
-    email = request.form.get("email")
-    senha = request.form.get("senha")
-    cargo = request.form.get("cargo")
-    salario = request.form.get("salario")
-    foto = request.files.get("foto")
+    nome = data.get("nome")
+    email = data.get("email")
+    senha = data.get("senha")
+    cargo = data.get("cargo")
+    salario = data.get("salario")
 
     try:
-
-        if foto == None:
-            foto_url = "None"
 
         if not nome or not email or not senha or not cargo or not salario:
             return jsonify({"mensagem": "Todos os campos são obrigatorios!"}), 400
@@ -40,18 +37,13 @@ def cadastrar_novo_colaborador():
         if colaborador_existente:
             return jsonify({"mensagem": "Email já cadastrado!"}), 409
 
-        if foto:
-            upload_result = cloudinary.uploader.upload(foto)
-            foto_url = upload_result.get("secure_url")
-            print(foto_url)
-
         novo_colaborador = Colaborador(
             nome=nome,
             email=email,
             senha=hash_senha(senha),
             cargo=cargo,
             salario=salario,
-            foto_url=foto_url,
+            foto_url="",
         )
 
         # Adiciona o novo colaborador à sessão do banco de dados
@@ -101,6 +93,36 @@ def login():
 
     except Exception as e:
         return jsonify({"erro": f"Ocorreu um erro inesperado: {str(e)}"}), 500
+
+
+@bp_colaborador.route("/foto", methods=["PUT"])
+def foto():
+    foto = request.files.get("foto")
+    header_token = request.headers.get("Authorization")
+
+    if not foto:
+        return jsonify({"erro": "Nenhuma foto enviada"}), 400
+
+    try:
+        token = header_token.split("Bearer ")[1]
+        id = decodificar_token(token)
+    except Exception as e:
+        return jsonify({"erro": str(e)}), 401
+
+    upload_result = cloudinary.uploader.upload(foto)
+    foto_url = upload_result.get("secure_url")
+
+    try:
+        colaborador = db.session.get(Colaborador, id)
+        colaborador.foto_url = foto_url
+        db.session.commit()
+    except Exception as e:
+        return jsonify({"erro": str(e)}), 401
+
+    return (
+        jsonify({"mensagem": "Foto atualizada com sucesso", "foto_url": foto_url}),
+        200,
+    )
 
 
 @bp_colaborador.route("/dados", methods=["GET"])
