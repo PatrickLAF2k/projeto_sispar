@@ -30,7 +30,7 @@ function Solicitacao() {
   const [dadosReembolso, setDadosReembolso] = useState([]);
 
   const [enviado, setEnviado] = useState(false);
-  
+
 
   useEffect(() => {
     if (enviado) {
@@ -118,9 +118,7 @@ function Solicitacao() {
 
   return (
     <div className={styles.layoutBody}>
-      {/* <NavBar /> */}
 
-      {/* Azul */}
       <header className={styles.headerSolicitacao}>
         <img src={Home} alt="Vetor da casinha" />
         <img src={Seta} alt="Vetor da setinha" />
@@ -129,10 +127,10 @@ function Solicitacao() {
         <p>Solicitação de Reembolsos</p>
       </header>
 
-      {/* VERDE */}
       <section className={styles.sectionSolicitacao}>
         <form onSubmit={(e) => e.preventDefault()}>
           <div className={styles.formGrupo1}>
+            
             <div className={styles.inputNome}>
               <label htmlFor="colaborador">Nome Completo</label>
               <input
@@ -178,6 +176,7 @@ function Solicitacao() {
           </div>
 
           <div className={styles.formGrupo2}>
+            
             <div className={styles.inputData}>
               <label htmlFor="data">Data</label>
               <input
@@ -244,7 +243,7 @@ function Solicitacao() {
               <label htmlFor="divisao">Div.</label>
               <input
                 id="divisao"
-                type="text"
+                type="number"
                 name="divisao"
                 value={divisao}
                 onChange={(e) => setDivisao(e.target.value)}
@@ -258,7 +257,7 @@ function Solicitacao() {
                 value={pep}
                 onChange={(e) => setPep(e.target.value)}
                 name="pep"
-                type="text"
+                type="number"
               />
             </div>
 
@@ -284,7 +283,7 @@ function Solicitacao() {
                 value={distanciaKm}
                 name="distanciaKm"
                 onChange={(e) => setDistanciaKm(e.target.value)}
-                type="text"
+                type="number"
               />
             </div>
 
@@ -295,7 +294,7 @@ function Solicitacao() {
                 value={valorKm}
                 onChange={(e) => setValorKm(e.target.value)}
                 name="valorKm"
-                type="text"
+                type="number"
               />
             </div>
 
@@ -303,7 +302,7 @@ function Solicitacao() {
               <label htmlFor="valorFaturado">Val. Faturado</label>
               <input
                 id="valorFaturado"
-                type="text"
+                type="number"
                 name="valorFaturado"
                 value={valorFaturado}
                 onChange={(e) => setValorFaturado(e.target.value)}
@@ -314,7 +313,7 @@ function Solicitacao() {
               <label htmlFor="despesas">Despesa</label>
               <input
                 id="despesas"
-                type="text"
+                type="number"
                 name="despesas"
                 value={despesas}
                 onChange={(e) => setDespesas(e.target.value)}
@@ -342,7 +341,6 @@ function Solicitacao() {
         </form>
       </section>
 
-      {/* Rosa */}
       <section className={styles.sectionTable}>
         <table>
           <thead>
@@ -418,7 +416,6 @@ function Solicitacao() {
         </table>
       </section>
 
-      {/* Laranja */}
       <footer className={styles.footerSolicitacao}>
         <section>
           <div className={styles.inputFooter}>
