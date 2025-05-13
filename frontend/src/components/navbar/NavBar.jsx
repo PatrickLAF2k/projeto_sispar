@@ -91,8 +91,11 @@ function NavBar() {
               }
               alt="Foto do perfil"
             />
-            <h3>{colaborador.nome}</h3>
-            <p>{colaborador.cargo}</p>
+            <div>
+              <h3>{colaborador.nome}</h3>
+              <p>{colaborador.cargo}</p>
+            </div>
+
           </div>
         </>
       )}
