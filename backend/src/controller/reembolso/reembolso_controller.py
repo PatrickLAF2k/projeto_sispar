@@ -10,10 +10,11 @@ bp_reembolso = Blueprint("reembolso", __name__, url_prefix="/reembolso")
 
 @bp_reembolso.route("/solicitar", methods=["POST"])
 def solicitar_reembolso():
-    dados_requisicao = request.get_json()
+    dados = request.get_json()
     header_token = request.headers.get("Authorization")
     token = header_token.split("Bearer ")[1]
     id = decodificar_token(token)
+    print(dados)
 
     try:
 
@@ -36,7 +37,7 @@ def solicitar_reembolso():
                 despesas=requisicao["despesas"],
                 id_colaborador=id["id"],
             )
-            for requisicao in dados_requisicao
+            for requisicao in dados
         ]
 
         db.session.bulk_save_objects(reembolsos)
@@ -68,10 +69,10 @@ def listar_reembolsos():
     
 @bp_reembolso.route("/listar/prestacao", methods=["POST"])
 def listar_reembolsos_prestacao():
-    dados_requisicao = request.get_json()
+    dados = request.get_json()
     
     try:
-        reembolsos = Reembolso.query.filter_by(numero_prestacao=dados_requisicao["numero_prestacao"]).all()
+        reembolsos = Reembolso.query.filter_by(numero_prestacao=dados["numero_prestacao"]).all()
 
         return jsonify([reembolso.to_dict() for reembolso in reembolsos]), 200
     except Exception as e:
