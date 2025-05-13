@@ -3,11 +3,12 @@ import Login from "./components/login/Login.jsx";
 import Reembolsos from "./components/reembolsos/Reembolsos.jsx";
 import Solicitacao from "./components/solicitacao/Solicitacao.jsx";
 import NavBar from "../src/components/navbar/NavBar.jsx";
+import Historico from "../src/components/historico/Historico.jsx"
 import "./global.scss";
 
 function AppWrapper() {
   const location = useLocation();
- 
+
   const mostrarNavBar = location.pathname !== "/";
 
   return (
@@ -17,6 +18,7 @@ function AppWrapper() {
         <Route path="/" element={<Login />} />
         <Route path="/reembolsos" element={<Reembolsos />} />
         <Route path="/solicitacao" element={<Solicitacao />} />
+        <Route path="/historico" element={<Historico />} />
       </Routes>
     </>
   );
