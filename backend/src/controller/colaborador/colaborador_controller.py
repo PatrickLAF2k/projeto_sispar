@@ -52,6 +52,7 @@ def cadastrar_novo_colaborador():
 
 
 @bp_colaborador.route("/login", methods=["POST"])
+@swag_from("../../docs/colaborador/login_colaborador.yml")
 def login():
     data = request.get_json()
     email = data["email"]
@@ -86,7 +87,7 @@ def login():
         return jsonify({"erro": f"Ocorreu um erro inesperado: {str(e)}"}), 500
 
 @bp_colaborador.route("/dados", methods=["GET"])
-def dados_colaboradores():
+def dados_colaborador():
     header_token = request.headers.get("Authorization")
     try:
         token = header_token.split("Bearer ")[1]
@@ -97,7 +98,7 @@ def dados_colaboradores():
 
         return jsonify(dados_colaborador), 200
     except Exception as e:
-        return jsonify({"erro": str(e)}), 4020
+        return jsonify({"erro": str(e)}), 400
 
 @bp_colaborador.route("/listar", methods=["GET"])
 def listar_colaboradores():
