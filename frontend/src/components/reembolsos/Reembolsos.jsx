@@ -80,7 +80,12 @@ function Rembolsos() {
             <h1>Verificar análises</h1>
           </article>
 
-          <article>
+          <article
+          onClick={() => {
+              navigate("/historico");
+            }}
+          
+          >
             <img src={SolicitarHistorico} alt="" />
             <h1>Histórico</h1>
           </article>

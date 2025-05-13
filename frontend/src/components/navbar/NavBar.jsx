@@ -141,7 +141,7 @@ function NavBar() {
           <div className={styles.divButton}>
             <button
               onClick={() => {
-                navigate("/solicitacao");
+                navigate("/historico");
               }}
               className={styles.buttonNavBar}
             >

@@ -2,6 +2,8 @@ from flask import Blueprint, request, jsonify
 from src.model.reembolso_model import Reembolso
 from src.model import db
 from src.security.security import decodificar_token
+from datetime import datetime
+
 
 bp_reembolso = Blueprint("reembolso", __name__, url_prefix="/reembolso")
 
@@ -21,7 +23,7 @@ def solicitar_reembolso():
                 empresa=requisicao["empresa"],
                 numero_prestacao=requisicao["numero_prestacao"],
                 descricao=requisicao["descricao"],
-                data=requisicao["data"],
+                data=datetime.strptime(requisicao["data"], "%Y-%m-%d").date(),
                 tipo_reembolso=requisicao["tipo_reembolso"],
                 centro_custo=requisicao["centro_custo"],
                 ordem_interna=requisicao["ordem_interna"],

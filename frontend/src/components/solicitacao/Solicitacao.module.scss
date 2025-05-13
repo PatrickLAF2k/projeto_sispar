@@ -1,3 +1,9 @@
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .layoutBody {
   display: flex;
   flex-direction: column;
@@ -27,7 +33,6 @@
         width: 40%;
         display: flex;
         justify-content: space-evenly;
-        // align-items: center;
         flex-wrap: wrap;
         padding-right: 12px;
         border-right: solid #cbd4e1 0.8px;
@@ -49,6 +54,7 @@
 
           textarea {
             height: 10vh;
+            resize: none;
           }
         }
       }
@@ -99,12 +105,10 @@
 
         .moeda {
           select {
-            // display: flex;
             background-image: url("../../assets/Solicitacao/seta.png");
             padding: 0 12px;
             background-repeat: no-repeat;
             background-position: right;
-            // text-align: center;
             cursor: pointer;
             appearance: none;
           }
@@ -152,6 +156,7 @@
             align-items: center;
             justify-content: space-evenly;
           }
+
           .deletar {
             width: 30%;
             background-color: #00bedd;
@@ -211,6 +216,7 @@
           &:hover {
             background-color: #f1f4f9;
           }
+
           td {
             text-align: center;
             padding: 12px;
@@ -229,7 +235,6 @@
             }
           }
 
-          // Estilos especiais para colunas com textos maiores
           .colaborador,
           .empresa,
           .tipoReembolso,
@@ -286,6 +291,7 @@
         height: 45px;
         padding: 12px;
       }
+
       .buttonCancelar {
         background-color: #a60b2f;
       }
