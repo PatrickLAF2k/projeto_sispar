@@ -1,0 +1,133 @@
+.Body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+  padding-right: 1%;
+
+  .headerHistorico {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    height: 5%;
+    width: 95%;
+    margin-left: auto;
+  }
+
+  .sectionTable {
+    width: 95%;
+    height: 80vh;
+    border-radius: 6px;
+    margin-left: auto;
+    overflow: auto;
+    border: solid #cbd4e1 0.8px;
+    color: #23282f;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead {
+        tr {
+          text-align: center;
+          
+
+          th {
+            border: solid #cbd4e1 0.8px;
+            border-top: none;
+            border-left: none;
+            background-color: #f1f4f9;
+            font-weight: 400;
+            padding: 12px;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          &:hover {
+            background-color: #f1f4f9;
+          }
+
+          td {
+            text-align: center;
+            padding: 12px;
+            border: solid #cbd4e1 0.8px;
+            border-left: none;
+            color: #23282f;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 120px;
+
+            img{
+              cursor: pointer;
+            }
+
+            transition: background-color 0.2s;
+
+            &:has(.btnLixeira:hover) {
+              background-color: #001a3d;
+            }
+          }
+
+          .colaborador,
+          .empresa,
+          .tipoReembolso,
+          .centroCusto,
+          .ordemInterna {
+            max-width: 150px;
+          }
+        }
+      }
+    }
+  }
+
+  .containerDados {
+    width: 50%;
+    height: 10%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 6px;
+    // border: 0.8px solid #cbd4e1;
+    user-select: none;
+    margin: 0 auto;
+
+    div {
+      display: flex;
+      width: 20%;
+      height: 50%;
+      align-items: center;
+      justify-content: space-evenly;
+      border-radius: 6px;
+    }
+
+    .imgSolicitados {
+      background-color: #00bedd;
+      padding: 6px;
+      border-radius: 6px;
+    }
+
+    .imgAnalise {
+      background-color: #e56700;
+      padding: 6px;
+      border-radius: 6px;
+    }
+
+    .imgAprovados {
+      background-color: #007a6a;
+      padding: 6px;
+      border-radius: 6px;
+    }
+
+    .imgRejeitados {
+      background-color: #a60b2f;
+      padding: 6px;
+      border-radius: 6px;
+    }
+  }
+
+
+}
