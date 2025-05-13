@@ -1,0 +1,60 @@
+tags:
+  - Colaborador
+description: Endpoint para login de um colaborador.
+
+parameters:
+  - name: body
+    in: body
+    required: true
+    schema:
+      type: object
+      required:
+        - email
+        - senha
+      properties:
+        email:
+          type: string
+          example: johndoe@email.com
+        senha:
+          type: string
+          example: "123456"
+
+responses:
+  200:
+    description: Login realizado com sucesso.
+    schema:
+      type: object
+      properties:
+        mensagem:
+          type: string
+          example: Login realizado com sucesso!
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+  400:
+    description: Requisição mal formada.
+    examples:
+      application/json:
+        campos_obrigatorios:
+          mensagem: "Todos os campos são obrigatórios."
+        email_invalido:
+          mensagem: "Email com formato inválido."
+
+  401:
+    description: Credenciais inválidas.
+    examples:
+      application/json:
+        mensagem: "Email ou senha incorretos."
+
+  404:
+    description: Colaborador não encontrado.
+    examples:
+      application/json:
+        mensagem: "Colaborador não encontrado."
+
+  500:
+    description: Erro interno inesperado.
+    examples:
+      application/json:
+        erro: "Ocorreu um erro inesperado: detalhes do erro aqui"
