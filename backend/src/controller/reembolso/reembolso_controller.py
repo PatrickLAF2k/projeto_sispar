@@ -3,6 +3,7 @@ from src.model.reembolso_model import Reembolso
 from src.model import db
 from src.security.security import decodificar_token
 from datetime import datetime
+from flasgger import swag_from
 
 
 bp_reembolso = Blueprint("reembolso", __name__, url_prefix="/reembolso")
@@ -14,7 +15,6 @@ def solicitar_reembolso():
     header_token = request.headers.get("Authorization")
     token = header_token.split("Bearer ")[1]
     id = decodificar_token(token)
-    print(dados)
 
     try:
 
@@ -53,6 +53,7 @@ def solicitar_reembolso():
 
 
 @bp_reembolso.route("/listar", methods=["GET"])
+@swag_from("../../docs/reembolso/listar_reembolsos.yml")
 def listar_reembolsos():
     header_token = request.headers.get("Authorization")
     token = header_token.split("Bearer ")[1]

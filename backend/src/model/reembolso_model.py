@@ -5,7 +5,6 @@ from sqlalchemy import func
 
 
 class Reembolso(db.Model):
-    # Define manualmente o nome da tabela no banco de dados como 'reembolso'
     __tablename__ = "reembolso"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -27,7 +26,6 @@ class Reembolso(db.Model):
     id_colaborador = Column(Integer, ForeignKey("colaborador.id"), nullable=False)
     status = Column(String(20), nullable=False)
 
-    # Método construtor para facilitar a criação de objetos Colaborador
     def __init__(
         self,
         colaborador,
