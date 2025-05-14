@@ -17,44 +17,63 @@ parameters:
           example: johndoe@email.com
         senha:
           type: string
-          example: "123456"
+          example: "1234567"
 
 responses:
   200:
     description: Login realizado com sucesso.
-    schema:
-      type: object
-      properties:
-        mensagem:
-          type: string
-          example: Login realizado com sucesso!
-        token:
-          type: string
-          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            mensagem:
+              type: string
+              example: "Login realizado com sucesso!"
+            token:
+              type: string
+              example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          
   400:
     description: Requisição mal formada.
-    examples:
+    content:
       application/json:
-        campos_obrigatorios:
-          mensagem: "Todos os campos são obrigatórios."
-        email_invalido:
-          mensagem: "Email com formato inválido."
-
+        schema:
+          type: object
+          properties:
+            mensagem:
+              type: string
+              example: "Todos os campos são obrigatórios."
+          
   401:
     description: Credenciais inválidas.
-    examples:
+    content:
       application/json:
-        mensagem: "Email ou senha incorretos."
+        schema:
+          type: object
+          properties:
+            mensagem:
+              type: string
+              example: "Email ou senha incorretos."
 
   404:
     description: Colaborador não encontrado.
-    examples:
+    content:
       application/json:
-        mensagem: "Colaborador não encontrado."
+        schema:
+          type: object
+          properties:
+            mensagem:
+              type: string
+              example: "Colaborador não encontrado."
 
   500:
     description: Erro interno inesperado.
-    examples:
+    content:
       application/json:
-        erro: "Ocorreu um erro inesperado: detalhes do erro aqui"
+        schema:
+          type: object
+          properties:
+            erro:
+              type: string
+              example: "Ocorreu um erro inesperado: detalhes do erro aqui"

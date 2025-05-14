@@ -26,35 +26,25 @@ Swagger_config = {
 
 
 def create_app():
-    # Carrega as variáveis de ambiente do arquivo .env
     load_dotenv()
 
-    # Cria uma instância do Flask
     app = Flask(__name__)
 
-    # Configura o CORS para permitir requisições de qualquer origem
     CORS(app, origins="*")
 
-    # Define a chave secreta a partir da variável de ambiente
     app.secret_key = os.getenv("SECRET_KEY")
 
-    # Configura o Cloudinary usando as variáveis de ambiente
     cloudinary.config(cloudinary_url=os.getenv("CLOUDINARY_URL"))
 
-    # Registra os blueprints
     app.register_blueprint(bp_colaborador)
     app.register_blueprint(bp_reembolso)
 
-    # Carrega as configurações
     app.config.from_object(Config)
 
-    # Inicializa o banco de dados
     db.init_app(app)
 
-    # Configura o Swagger
     Swagger(app, config=Swagger_config)
 
-    # Cria as tabelas no banco
     with app.app_context():
         db.create_all()
 

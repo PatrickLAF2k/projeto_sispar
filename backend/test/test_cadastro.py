@@ -19,7 +19,7 @@ salario = "1000.00"
         (nome, email, senha, cargo, "", 400, "Todos os campos são obrigatórios."),
         (nome, email, senha, cargo, "100.020.", 400, "Salário com formato inválido. Ex: 0000.00"),
         (nome, email, senha, cargo, "-1", 400, "Salário com formato inválido. Ex: 0000.00"),
-        (nome, "testegmail.com", senha, cargo, salario, 400, "Email com formato inválido."),#
+        (nome, "testegmail.com", senha, cargo, salario, 400, "Email com formato inválido."),
         (nome, "teste@gmail", senha, cargo, salario, 400, "Email com formato inválido."),
         (nome, email, "12345", cargo, salario, 400, "Senha deve ter no mínimo 6 caracteres."),
         (nome, "testeduplicado@gmail.com", senha, cargo, salario, 409, "Email já cadastrado."),

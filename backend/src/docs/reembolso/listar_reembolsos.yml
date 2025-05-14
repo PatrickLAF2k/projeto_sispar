@@ -1,0 +1,105 @@
+tags:
+  - Reembolso
+description: Endpoint para listar os reembolsos solicitados do usuário logado.
+
+parameters:
+  - name: Authorization
+    in: header
+    required: true
+    schema:
+      type: string
+    example: Bearer (Necessario colocar o Bearer + codigo do token da resposta do login)
+responses:
+  200:
+    description: Reembolsos retornados com sucesso.
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              centro_custo:
+                type: string
+                example: FIN CONTROLES INTERNOS MTZ
+              colaborador:
+                type: string
+                example: Patrick Leonardo de Almeida Fajardo
+              data:
+                type: string
+                example: 2025-01-01T00:00:00Z
+              descricao:
+                type: string
+                example: "213121231321"
+              despesas:
+                type: string
+                example: "123.00"
+              distancia_km:
+                type: string
+                example: "123.00"
+              divisao:
+                type: string
+                example: "23"
+              empresa:
+                type: string
+                example: teste
+              id_colaborador:
+                type: string
+                example: "38"
+              moeda:
+                type: string
+                example: brl
+              numero_prestacao:
+                type: string
+                example: "2"
+              ordem_interna:
+                type: string
+                example: "123"
+              pep:
+                type: string
+                example: "123"
+              status:
+                type: string
+                example: Em análise
+              tipo_reembolso:
+                type: string
+                example: alimentacao
+              valor_faturado:
+                type: string
+                example: "123.00"
+              valor_km:
+                type: string
+                example: "123.00"
+
+  401:
+    description: Token inválido ou ausente.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            mensagem:
+              type: string
+              example: "Token JWT ausente ou inválido."
+
+  400:
+    description: Erro na requisição.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            erro:
+              type: string
+              example: "Erro ao listar reembolsos."
+
+  500:
+    description: Erro interno inesperado.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            erro:
+              type: string
+              example: "Ocorreu um erro inesperado: detalhes do erro aqui"
