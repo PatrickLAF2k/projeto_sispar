@@ -54,11 +54,32 @@
       align-items: center;
       height: 90%;
 
-      input {
-        height: 45px;
-        width: 100%;
-        padding: 12px 13px;
-        @include input_styles;
+
+
+      .inputGroup {
+        position: relative;
+
+        input {
+          height: 45px;
+          width: 100%;
+          padding: 12px 13px;
+          @include input_styles;
+        }
+
+        .alert {
+          position: absolute;
+          top: 50%;
+          right: -5px;
+          transform: translateY(-50%);
+          background-color: #ffcdd2; // vermelho claro
+          color: #b71c1c; // vermelho escuro
+          padding: 4px 8px;
+          border-radius: 4px;
+          font-size: 0.75rem;
+          white-space: nowrap;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+          z-index: 1;
+        }
       }
 
       .modalButtons {
@@ -76,6 +97,7 @@
           border-radius: 6px;
           cursor: pointer;
         }
+
         .cancelarButton {
           background-color: #a60b2f;
         }
