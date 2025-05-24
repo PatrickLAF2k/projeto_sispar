@@ -1,43 +1,75 @@
 import { useState } from "react";
-import api from "../../Services/Api"; // Importa o serviço para fazer a requisição API
-import styles from "./CadastroModal.module.scss"; // Importa o arquivo de estilos
-import Logo from "../../assets/Tela_Login/logo_ws_sem_txt.png"; // Importa o logo
+import api from "../../Services/Api";
+import styles from "./CadastroModal.module.scss";
+import Logo from "../../assets/Tela_Login/logo_ws_sem_txt.png";
+import { set, setErrorMap, z } from "zod"
 
 export default function CadastroModal({ fecharModal }) {
-  // Definindo estados para controlar os valores dos campos e mensagens de erro/sucesso
-  const [nome, setNome] = useState(""); // Estado para o campo nome
-  const [email, setEmail] = useState(""); // Estado para o campo email
-  const [senha, setSenha] = useState(""); // Estado para o campo senha
-  const [cargo, setCargo] = useState(""); // Estado para o campo cargo
-  const [salario, setSalario] = useState(""); // Estado para o campo salário
-  const [mensagemErro, setMensagemErro] = useState(""); // Estado para a mensagem de erro
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [salario, setSalario] = useState("");
+  const [mensagemErro, setMensagemErro] = useState("");
+  const [erros, setErros] = useState({});
 
-  // Função para cadastrar o colaborador
+
+
+  const schema = z.object({
+    nome: z.string().min(1, "Nome é obrigatório"),
+    email: z.string().email("Email inválido"),
+    senha: z.string().min(6, "Senha deve ter no mínimo 6 caracteres"),
+    cargo: z.string().min(1, "Cargo é obrigatório"),
+    salario: z
+      .number({ invalid_type_error: "Salário deve ser um número" })
+      .min(0, "Salário não pode ser negativo"),
+  });
+
   const cadastrarColaborador = async (e) => {
-    e.preventDefault(); // Impede o comportamento padrão do formulário (recarregar a página)
+    e.preventDefault();
 
-    const colaborador = {
+    const formData = {
       nome,
       email,
       senha,
       cargo,
       salario,
-      foto_url:"None",
     };
 
+    const result = schema.safeParse(formData);
+
+    if (!result.success) {
+      const fieldErrors = result.error.format();
+      const novosErros = {
+        nome: fieldErrors.nome?._errors?.[0] || "",
+        email: fieldErrors.email?._errors?.[0] || "",
+        senha: fieldErrors.senha?._errors?.[0] || "",
+        cargo: fieldErrors.cargo?._errors?.[0] || "",
+        salario: fieldErrors.salario?._errors?.[0] || "",
+      };
+      setErros(novosErros);
+      return;
+    } else {
+      setErros({});
+    }
+
+    const colaborador = {
+      ...result.data,
+      foto_url: "None",
+    };
+
+
     try {
-      // Envia uma requisição POST para o backend com os dados do colaborador
       const resposta = await api.post("/colaborador/cadastrar", colaborador, {
-        
+
       });
 
-      // Se o cadastro for bem-sucedido (status 201), exibe a mensagem de sucesso
       if (resposta.status === 201) {
         alert(`Colaborador ${nome} foi cadastrado com sucesso!`);
-        fecharModal(); // Chama a função para fechar o modal
+        fecharModal();
       }
     } catch (error) {
-      setMensagemErro(error.response.data.mensagem); // Define a mensagem de erro
+      setMensagemErro(error.response.data.mensagem);
     }
   };
 
@@ -47,45 +79,64 @@ export default function CadastroModal({ fecharModal }) {
       <div className={styles.modalContainer}>
         {" "}
         <img src={Logo} alt="Logo" />
-        <h2>Cadastrar Novo Colaborador</h2> {/* Título do modal */}
-        {/* Formulário de cadastro */}
+        <h2>Cadastrar Novo Colaborador</h2>
+
         <form onSubmit={cadastrarColaborador} className={styles.formCadastro}>
-          <input
-            type="text"
-            name="nome"
-            placeholder="Nome Completo"
-            value={nome} // O valor do campo 'nome' vem do estado
-            onChange={(e) => setNome(e.target.value)} // Atualiza o valor do campo
-            // Torna o campo obrigatório
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            name="senha"
-            placeholder="Senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-          />
-          <input
-            type="text"
-            name="cargo"
-            placeholder="Cargo"
-            value={cargo}
-            onChange={(e) => setCargo(e.target.value)}
-          />
-          <input
-            type="text"
-            name="salario"
-            placeholder="Salário"
-            value={salario}
-            onChange={(e) => setSalario(e.target.value)}
-          />
+          <div className={styles.inputGroup}>
+            <input
+              type="text"
+              name="nome"
+              placeholder="Nome Completo"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              o
+            />
+            {erros.nome && <span className={styles.alert}>{erros.nome}</span>}
+          </div>
+
+          <div className={styles.inputGroup}>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {erros.email && <span className={styles.alert}>{erros.email}</span>}
+          </div>
+
+          <div className={styles.inputGroup}>
+            <input
+              type="password"
+              name="senha"
+              placeholder="Senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+            />
+            {erros.email && <span className={styles.alert}>{erros.email}</span>}
+          </div>
+
+          <div className={styles.inputGroup}>
+            <input
+              type="text"
+              name="cargo"
+              placeholder="Cargo"
+              value={cargo}
+              onChange={(e) => setCargo(e.target.value)}
+            />
+            {erros.email && <span className={styles.alert}>{erros.email}</span>}
+          </div>
+
+          <div className={styles.inputGroup}>
+            <input
+              type="text"
+              name="salario"
+              placeholder="Salário"
+              value={salario}
+              onChange={(e) => setSalario(e.target.value)}
+            />
+            {erros.email && <span className={styles.alert}>{erros.email}</span>}
+          </div>
 
           <div className={styles.modalButtons}>
             <button type="submit">Cadastrar</button>
